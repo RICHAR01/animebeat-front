@@ -2,14 +2,20 @@ FROM node:12-alpine
 
 WORKDIR /app
 
-# Pre-installed deps (node_modules + bower already in repo)
-COPY . .
+# Install build deps for native modules (mongoose 5.x needs them)
+RUN apk add --no-cache python3 make g++
 
-# Only install globals
-RUN npm install -g grunt-cli 2>/dev/null || true
+# Copy package files first for layer caching
+COPY package*.json .bowerrc bower.json ./
+
+# Fresh install with mongoose 5.13
+RUN npm install --production=false --legacy-peer-deps
+RUN npm install -g bower 2>/dev/null && bower install --config.interactive=false --allow-root 2>/dev/null || true
+
+# Copy the rest  
+COPY . .
 
 ENV NODE_ENV=production
 EXPOSE 3000
 
-# Use node server.js directly instead of grunt (avoids nodemon --debug crash)
 CMD ["node", "server.js"]
