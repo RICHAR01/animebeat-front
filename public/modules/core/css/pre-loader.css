@@ -1,0 +1,12 @@
+pre-loader {
+  display: block;
+  height: calc(100vh - 50px);
+  position: relative;
+}
+
+pre-loader loader {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

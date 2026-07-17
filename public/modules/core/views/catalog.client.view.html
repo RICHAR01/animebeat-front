@@ -1,0 +1,91 @@
+<div ng-include="editionTpl" ng-show="editionMode"></div>
+
+<div ng-show="!editionMode">
+  <searcher collection="collection"
+                search-by="searcherOptions.searchBy"
+                placeholder="searcherOptions.placeholder"
+                debounce="searcherOptions.debounce"
+                ng-resource="ngResource"
+                results-quantity="paginatorOptions.pageSize"
+                total-items="paginatorOptions.totalItems"
+                current-page="paginatorOptions.page"
+                extend-filter="extendFilter"
+                search-where="searchWhere">
+  </searcher>
+
+  <div class="catalog">
+
+    <no-record-message ng-if="collection.length === 0"></no-record-message>
+
+    <div ng-if="collection.length > 0">
+      <catalog-table ng-if="!customItemsTpl"></catalog-table>
+      <div ng-include="customItemsTpl" ng-if="customItemsTpl"></div>
+    </div>
+
+  </div>
+
+  <paginator 
+    page="paginatorOptions.page"
+    page-size="paginatorOptions.pageSize"
+    total="paginatorOptions.totalItems"
+    show-prev-next="paginatorOptions.showPrevNext"
+    show-first-last="paginatorOptions.showFirstLast"
+    text-first="paginatorOptions.textFirst"
+    text-last="paginatorOptions.textLast"
+    text-next="paginatorOptions.textNext"
+    text-prev="paginatorOptions.textPrev"
+    text-title-page="paginatorOptions.textTitlePage"
+    text-title-first="paginatorOptions.textTitleFirst"
+    text-title-last="paginatorOptions.textTitleLast"
+    text-title-next="paginatorOptions.textTitleNext"
+    text-title-prev="paginatorOptions.textTitlePrev"
+    text-first-class="paginatorOptions.textFirstClass"
+    text-last-class="paginatorOptions.textLastClass"
+    text-next-class="paginatorOptions.textNextClass"
+    text-prev-class="paginatorOptions.textPrevClass"
+    ul-class="paginatorOptions.ulClass"
+    active-class="paginatorOptions.activeClass"
+    disabled-class="paginatorOptions.disabledClass"
+    disabled="paginatorOptions.disabled"
+    scroll-top="paginatorOptions.scrollTop"
+    hide-if-empty="paginatorOptions.hideIfEmpty"
+    adjacent="paginatorOptions.adjacent"
+    dots="paginatorOptions.dots"
+    show-only-next-prev="paginatorOptions.showOnlyNextPrev"
+    align="paginatorOptions.align"
+    show-info="paginatorOptions.showInfo"
+    ng-resource="ngResource"
+    collection="collection"
+    extend-filter="extendFilter"
+    search-where="searchWhere">
+  </paginator>
+
+  <div id="deletionModalContainer" 
+       ng-include="deletionModalTpl" 
+       ng-if="deletionModalTpl">
+  </div>
+  <div id="defaultDeletionModal" class="modal" ng-if="!deletionModalTpl">
+    <div class="modal-content row no-margin">
+      <h5>Eliminar elemento</h5>
+      <div class="col s12 no-padding">
+        ¿Está seguro que desea eliminar el elemento seleccionado?
+      </div>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="delete(selectedItem.id)" class="modal-action waves-effect waves-light btn blue">Eliminar</a>
+        <a class="modal-action modal-close waves-effect waves-light btn-flat">Cancelar</a>
+    </div>
+  </div>
+
+  <div class="fixed-action-btn">
+    <button 
+      class="btn-floating btn-large warm-pink waves-effect waves-light"
+      ng-click="showEditionMode()"
+      tooltipped 
+      data-position="top"
+      data-tooltip="Agregar">
+      <i class="material-icons">add</i>
+    </button>
+  </div>
+
+</div>

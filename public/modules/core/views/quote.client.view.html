@@ -1,0 +1,19 @@
+<div class="image-container">
+  <img ng-src="{{quote.character.image}}"/>
+</div>
+<div class="description-container">
+	<div class="character-quote">
+    "{{quote.quote}}"
+  </div>
+  <div class="character-name">
+    - {{quote.character.name}}
+  </div>
+</div>
+<favorites
+	favorites="quote.favorites"
+	current-user-id="currentUserId"
+	on-create-favorite="onCreateQuoteFavorite"
+	on-delete-favorite="onDeleteQuoteFavorite"
+	identifier="quote.id"
+	ng-if="showFavorites">
+</favorites>

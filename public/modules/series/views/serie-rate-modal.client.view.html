@@ -1,0 +1,45 @@
+<div id="serie-rate-modal" class="modal serie-rate-modal">
+  <div class="modal-content row no-margin">
+    <div class="title">Selecciona calificación:</div>
+
+    <div class="col s12 no-padding rate-icon-container">
+
+			<div class="rate-icon" ng-click="onChangeSerieRate('bad')">
+				<img src="http://emoticoner.com/files/emoticons/milk-bottle/hero-milk-bottle-emoticon.gif" />
+				<div class="description">Mala</div>
+			</div>
+
+			<div class="rate-icon" ng-click="onChangeSerieRate('meh')">
+				<img src="http://emoticoner.com/files/emoticons/milk-bottle/grinning-milk-bottle-emoticon.gif" />
+				<div class="description">Meh</div>
+			</div>
+
+			<div class="rate-icon" ng-click="onChangeSerieRate('good')">
+				<img src="http://emoticoner.com/files/emoticons/milk-bottle/victory-sign-milk-bottle-emoticon.gif" />
+				<div class="description">Buena</div>
+			</div>
+
+			<div class="rate-icon" ng-click="onChangeSerieRate('great')">
+				<img src="http://emoticoner.com/files/emoticons/milk-bottle/happy-milk-bottle-emoticon.gif" />
+				<div class="description">Genial</div>
+			</div>
+
+			<div class="rate-icon" ng-click="onChangeSerieRate('perfect')">
+				<img src="http://emoticoner.com/files/emoticons/milk-bottle/in-love-milk-bottle-emoticon.gif" />
+				<div class="description">Perfecta</div>
+			</div>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+		<a class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    <button
+			class="modal-action waves-effect waves-green btn-flat"
+      ng-click="onDeleteSerieRate()">
+			Eliminar
+		</button>
+  </div>
+
+</div>

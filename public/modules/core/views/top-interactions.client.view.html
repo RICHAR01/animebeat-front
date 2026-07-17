@@ -1,0 +1,52 @@
+<div class="title">
+  Reacciones
+</div>
+<div class="interactions-container">
+  <loader ng-if="!interactions.reactions"></loader>
+  <reaction
+		reaction="reaction"
+		current-user-id="currentUserId"
+		show-favorites="true"
+		on-create-reaction-favorite="onCreateReactionFavorite"
+		on-delete-reaction-favorite="onDeleteReactionFavorite"
+		ng-repeat="reaction in interactions.reactions"
+		ng-if="interactions.reactions.length">
+	</reaction>
+	<div class="show-all-btn" ng-click="goToReactionsTab()" ng-if="interactions.reactions.length">
+		Mostrar todas
+	</div>
+	<message-with-icon
+    icon-class="material-icons"
+    icon-text="insert_comment"
+    icon-size="60"
+    title="Aun nadie a dejado su opinión, para ser el primero, ve al tab de reacciones."
+    ng-if="interactions && !interactions.reactions.length">
+  </message-with-icon>
+</div>
+
+<div class="title">
+  Citas
+</div>
+
+<div class="interactions-container">
+  <loader ng-if="!interactions.quotes"></loader>
+  <quote
+		quote="quote"
+		show-favorites="true"
+		current-user-id="currentUserId"
+		on-create-quote-favorite="onCreateQuoteFavorite"
+		on-delete-quote-favorite="onDeleteQuoteFavorite"
+		ng-repeat="quote in interactions.quotes"
+		ng-if="interactions.quotes.length">
+	</quote>
+	<div class="show-all-btn" ng-click="goToQuotesTab()" ng-if="interactions.quotes.length">
+		Mostrar todas
+	</div>
+  <message-with-icon
+    icon-class="material-icons"
+    icon-text="format_quote"
+    icon-size="60"
+    title="Aun no hay citas de personajes, agrega una desde el tab de citas."
+    ng-if="interactions && !interactions.quotes.length">
+  </message-with-icon>
+</div>

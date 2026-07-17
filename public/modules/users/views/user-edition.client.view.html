@@ -1,0 +1,91 @@
+<div class="row user-edition" ng-show="isContentLoaded">
+
+  <div class="col s12 background-picture-container">
+		<img
+			class="background-picture"
+			ng-src="{{user.background}}"
+			img-err-src="/modules/core/imgs/background.jpg"
+		/>
+
+    <div class="user-picture-container">
+			<img
+				ng-src="{{user.image}}"
+				img-err-src="/modules/core/imgs/profile.jpg"
+			/>
+    </div>
+
+    <div class="name">{{user.username}}</div>
+		<div class="nick-name">{{user.name}}</div>
+  </div>
+
+	<div class="content-container">
+
+		<div class="col s12 serie-block">
+
+      <div class="col s12 title-container">
+        <i class="material-icons">person</i>
+        <div class="title">Datos de usuario</div>
+      </div>
+
+      <div class="col s12 m6 l4" input-field>
+        <input id="name" ng-model="user.name" type="text" length="20" maxlength="20">
+        <label for="name">Nombre</label>
+      </div>
+
+			<div class="col s12 m6 l4" input-field>
+        <input id="address" ng-model="user.address" type="text" length="100" maxlength="100">
+        <label for="address">Direccion</label>
+      </div>
+
+			<div class="col s12 m6 l4" input-field>
+        <input id="waifu" ng-model="user.waifu" type="text" length="100" maxlength="100">
+        <label for="waifu">Waifu</label>
+      </div>
+
+			<div class="col s12" input-field>
+        <textarea id="description" ng-model="user.description" class="materialize-textarea" length="1000" maxlength="1000"></textarea>
+        <label for="description">Descripción</label>
+      </div>
+
+    </div>
+
+		<div class="col s12 serie-block">
+
+      <div class="col s12 title-container">
+        <i class="material-icons">link</i>
+        <div class="title">Enlaces</div>
+      </div>
+
+			<div class="col s12 m6 l6" input-field>
+        <input id="image" ng-model="user.image" type="text" length="100" maxlength="100">
+        <label for="image">Imagen perfil</label>
+      </div>
+
+			<div class="col s12 m6 l6" input-field>
+        <input id="url" ng-model="user.background" type="text" length="100" maxlength="100">
+        <label for="url">Imagen background</label>
+      </div>
+
+			<div class="col s12 m12 l12" input-field>
+        <input id="url" ng-model="user.url" type="text" length="100" maxlength="100">
+        <label for="url">Url</label>
+      </div>
+
+    </div>
+
+		<div class="col s12 btns-container">
+			<a ng-href="/#!/usuarios/{{user.username}}"
+				 class="waves-effect waves-light btn">
+			  CANCELAR
+			</a>
+			<a class="waves-effect waves-light btn"
+					ng-click="updateUser()">
+				ACTUALIZAR
+			</a>
+		</div>
+
+	</div>
+
+</div>
+
+<pre-loader ng-show="!isContentLoaded"></pre-loader>

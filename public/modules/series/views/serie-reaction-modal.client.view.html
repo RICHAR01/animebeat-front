@@ -1,0 +1,22 @@
+<div id="serie-reaction-modal" class="modal">
+  <div class="modal-content row no-margin">
+    <h5 ng-if="!userReaction.id">Nueva reacción</h5>
+    <h5 ng-if="userReaction.id">Editar reacción</h5>
+    
+    <div class="col s12 no-padding" ng-form="reactionForm">
+
+      <div class="col s12" input-field>
+        <textarea id="reaction" ng-model="userReaction.reaction" class="materialize-textarea" length="500" maxlength="500" required></textarea>
+        <label for="reaction">Reacción</label>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="modal-action waves-effect waves-green btn-flat"
+            ng-click="onSaveReaction()"
+            ng-disabled="reactionForm.$invalid">{{!userReaction.id ? 'Crear' : 'Actualizar'}}</button>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+  </div>
+</div>

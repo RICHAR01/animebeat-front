@@ -1,0 +1,12 @@
+<img class="main-picture" 
+     ng-src="{{serie.backgroundImage}}"
+     img-err-src="http://img05.deviantart.net/9020/i/2012/080/e/d/black_rock_shooter_wallpaper_by_belkirion-d4thbfv.jpg"/>
+<div class="shadow"></div>
+<div class="info-container">
+  <div class="serie-title" ng-if="bannerTitle">{{bannerTitle}}</div>
+  <div class="serie-name">{{serie.name}}</div>
+  <div class="japanese-name">{{serie.japaneseName}}</div>
+  <div class="see-btn" ng-if="serie.id">
+    <a ng-href="/#!/series/{{serie.id}}" class="waves-effect waves-light btn">Ver</a>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+no-results .container {
+  display: table;
+  height: 200px;
+  width: 100%;
+  font-size: 25px;
+}
+
+no-results .align-vertical {
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: 300;
+}

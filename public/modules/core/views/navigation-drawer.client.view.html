@@ -1,0 +1,43 @@
+<div class="row no-margin">
+  <div class="col s12 profile-container" ng-if="user">
+    <img
+			class="background"
+			ng-src="{{user.background}}"
+			img-err-src="/modules/core/imgs/background.jpg"
+		/>
+    <div class="profile-picture-container">
+      <img
+				class="profile-picture"
+				ng-src="{{user.image}}"
+				img-err-src="/modules/core/imgs/profile.jpg"
+			/>
+    </div>
+    <div class="username">{{user.username}}</div>
+    <div class="email">{{user.email}}</div>
+  </div>
+  <a class="col s12 item"
+       ng-href="/#!/inicio">
+    <i class="material-icons">home</i>
+    <div>Inicio</div>
+  </a>
+  <a class="col s12 item"
+       ng-href="/#!/temporadas">
+    <i class="material-icons">insert_invitation</i>
+    <div>Temporadas</div>
+  </a>
+  <a class="col s12 item"
+       ng-href="/#!/en-emision">
+    <i class="material-icons">whatshot</i>
+    <div>En Emisión</div>
+  </a>
+  <a class="col s12 item"
+       ng-href="/#!/admin/series"
+       ng-if="user.role.name === 'admin' || user.role.name === 'manager'">
+    <i class="material-icons">cloud</i>
+    <div>Administración</div>
+  </a>
+  <a class="col s12 item" ng-click="logout()" ng-if="user">
+    <i class="material-icons">exit_to_app</i>
+    <div>Cerrar sesión</div>
+  </a>
+</div>

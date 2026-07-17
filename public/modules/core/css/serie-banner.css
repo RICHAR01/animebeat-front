@@ -1,0 +1,94 @@
+serie-banner {
+  float: left;
+  width: 100%;
+  position: relative;
+  padding-bottom: 29%;
+  overflow: hidden;
+}
+
+serie-banner .main-picture {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+serie-banner .shadow {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.35;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+}
+
+serie-banner .info-container {
+  position: absolute;
+  opacity: 0.95;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+serie-banner .serie-title {
+  color: #fff;
+  text-align: center;
+  font-size: 1.5vw;
+  text-shadow: 0 0 5px #000;
+}
+
+serie-banner .info-container .serie-name {
+  color: #fff;
+  text-align: center;
+  font-size: 3vw;
+  text-shadow: 0 0 5px #000;
+}
+
+serie-banner .info-container .japanese-name {
+  color: #fff;
+  text-align: center;
+  font-size: 1.3vw;
+  text-shadow: 0 0 5px #000;
+  padding: 10px 0 20px 0;
+}
+
+serie-banner .info-container .see-btn {
+  text-align: center;
+}
+
+serie-banner .info-container .see-btn a {
+  background-color: transparent !important;
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1));
+  border: 1px solid #fff;
+  color: #fff !important;
+}
+
+/* mobile screen */
+
+@media all and (max-width: 600px) {
+  serie-banner {
+    padding-bottom: 45%;
+  }
+
+  serie-banner .serie-title {
+    font-size: 2.7vw;
+  }
+
+  serie-banner .info-container .serie-name {
+    font-size: 5vw;
+  }
+
+  serie-banner .info-container .japanese-name {
+    font-size: 3vw;
+    padding: 10px 0 8px 0;
+  }
+
+  serie-banner .info-container .see-btn {
+    transform: scale(0.5);
+  }
+}
+
+/* mobile screen end */

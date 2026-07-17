@@ -1,0 +1,47 @@
+<!-- TODO: Se uso mismo css que en serie -->
+<div class="row serie-edition">
+
+  <div class="col s12 container" ng-form="serieForm">
+
+    <div class="col s12 header">
+      <a ng-href="#!/admin/quotes">
+        <i class="material-icons">arrow_back</i>
+      </a>
+      <div class="title">Cita</div>
+    </div>
+
+    <div class="col s12 serie-block">
+
+      <div class="col s12 title-container">
+        <i class="material-icons">ondemand_video</i>
+        <div class="title">Datos del anime</div>
+      </div>
+
+      <div class="col s12" input-field>
+        <textarea id="quote" ng-model="quote.quote" class="materialize-textarea" length="1000" maxlength="1000" required></textarea>
+        <label for="quote">Cita</label>
+      </div>
+
+      <div class="col s6 m3 l3">
+        <input ng-model="quote.active" type="checkbox" id="active" />
+        <label for="active">Revisado</label>
+      </div>
+
+    </div>
+  
+  </div>
+
+</div>
+
+<!-- save btn -->
+<div class="fixed-action-btn">
+  <button 
+    class="btn-floating btn-large warm-pink waves-effect waves-light"
+    ng-disabled="serieForm.$invalid"
+    ng-click="save()"
+    tooltipped 
+    data-position="top"
+    data-tooltip="Guardar">
+    <i class="material-icons">save</i>
+  </button>
+</div>

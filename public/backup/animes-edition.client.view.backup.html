@@ -1,0 +1,286 @@
+<!-- TODO: Dividir en dos tapbs serie-episodios -->
+<div id="animes-edition" class="edition-margin enable-animate-entrance">
+  <h5 ng-if="!serie.id" class="thin center-align">Nueva serie</h5>
+  <h5 ng-if="serie.id" class="thin center-align">Editando "{{serie.name}}"</h5>
+  <div class="row no-margin">
+
+    <div class="col s12">
+      <form name="serieForm" class="form-floating">
+
+        <div class="input-field col s6">
+          <input id="name" ng-model="serie.name" type="text" class="validate" required>
+          <label for="name">Nombre</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="japaneseName" ng-model="serie.japaneseName" type="text" class="validate" required>
+          <label for="japaneseName">Nombre Japonés</label>
+        </div>
+
+        <div class="input-field col s12">
+          <textarea id="synopsis" ng-model="serie.synopsis" class="materialize-textarea" required></textarea>
+          <label for="synopsis">Sinopsis</label>
+        </div>
+
+        <div class="input-field col s2">
+          <input id="chaptersNumber" ng-model="serie.chaptersNumber" type="text" class="validate" required>
+          <label for="chaptersNumber">No Capitulos</label>
+        </div>
+
+        <div class="form-field col s2">
+          <label>Tipo</label>
+          <select class="" ng-model="serie.type" material-select watch required>
+            <option value="serie">Serie</option>
+            <option value="ova">Ova</option>
+            <option value="special">Especial</option>
+            <option value="movie">Película</option>
+          </select>
+        </div>
+
+        <div class="form-field col s2">
+          <label>Año</label>
+          <select class="" ng-model="serie.year" material-select watch required>
+            <option ng-repeat="year in options.years">{{year}}</option>
+          </select>
+        </div>
+
+        <div class="form-field col s2">
+          <label>Temporada</label>
+          <select class="" ng-model="serie.season" material-select watch required>
+            <option value="spring">Primavera</option>
+            <option value="summer">Verano</option>
+            <option value="autumn">Otoño</option>
+            <option value="winter">Invierno</option>
+          </select>
+        </div>
+
+        <div class="form-field col s2">
+          <label>Estado</label>
+          <select class="" ng-model="serie.status" material-select watch required>
+            <option value="ongoing">En proceso</option>
+            <option value="finished">Terminada</option>
+          </select>
+        </div>
+
+        <div class="form-group col s2">
+          <label>Estudio</label>
+          <select class="" ng-model="serie.studioId" material-select watch required>
+            <option ng-repeat="studio in studios" value="{{studio.id}}" >{{studio.name}}</option>
+          </select>
+        </div>
+        <!--Agregar selector con busqueda-->
+        
+        <div class="input-field col s12">
+          <input id="minutes" ng-model="serie.minutes" type="text" class="validate" required>
+          <label for="minutes">Minutos</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="poster" ng-model="serie.poster" type="text" class="validate" required>
+          <label for="poster">Poster</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="backgroundImage" ng-model="serie.backgroundImage" type="text" class="validate" required>
+          <label for="backgroundImage">Imagen de Fondo</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="trailer" ng-model="serie.trailer" type="text" class="validate">
+          <label for="trailer">Trailer</label>
+        </div>
+
+        <div class="col s12 m12 form-group filled">
+          <label>Géneros</label>
+          <div isteven-multi-select
+               input-model="genres"
+               output-model="selectedGenres"
+               button-label="name"
+               item-label="name"
+               search-property="name"
+               tick-property ="isChecked"
+               translation="searchInputTranslations"
+               on-item-click="onGenreChange()"
+               helper-elements="filter">
+          </div>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="groupId" ng-model="serie.groupId" type="text" class="validate">
+          <label for="groupId">Id grupo</label>
+        </div>
+        <div class="col s6"> 
+          <a class="waves-effect waves-light btn"
+             ng-click="onGroupChange()">
+            <i class="material-icons left">nature_people</i>
+            Seleccionar grupo
+          </a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Edicion de episodios -->
+    <div class="col s12 no-padding">
+      <div class="row serie-episodes">
+
+        <div class="col s12 header">
+          Episodios
+          <div class="chip right" ng-click="openQualityNewModal()">
+            +calidad
+          </div>
+        </div>
+        <div class="col s12 no-padding episode-header" ng-repeat="episode in episodes">
+          <div class="col s12" ng-click="showEpisode = !showEpisode" ng-init="showEpisode = false">
+            Episodio {{episode.number}}
+          </div>
+
+          <div class="col s12 episode-shown" ng-show="showEpisode">
+            <div class="col s8">
+              <div class="input-field col s12">
+                <input id="name" ng-model="episode.name" type="text" class="validate" required>
+                <label for="name">Nombre</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="number" ng-model="episode.number" type="text" class="validate" required>
+                <label for="number">Número</label>
+              </div>
+              <div class="input-field col s8">
+                <input id="image" ng-model="episode.image" type="text" class="validate" required>
+                <label for="image">Imagen</label>
+              </div>
+              <!-- contenido de episodio -->
+            </div>
+            <div class="col s4">
+              IMG
+            </div>
+            <div class="col s12 downloads-header">
+              Downloads
+            </div>
+            <div class="col s4" ng-repeat="(key, myquality) in episode.qualities">
+                <div class="col s12">
+                  {{key}} ({{myquality.length}}):
+                  <div class="chip" ng-click="addServer(myquality)">
+                    +
+                  </div>
+                </div>
+
+                <div class="col s12 no-padding" ng-repeat="server in myquality">
+                  <div class="input-field col s5">
+                    <input id="server" ng-model="server.server" type="text" class="validate" required>
+                    <label for="server">Server</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="url" ng-model="server.url" type="text" class="validate" required>
+                    <label for="url">Url</label>
+                  </div>
+                  <div class="col s1 no-padding">
+                    <div class="chip" ng-click="removeServer(myquality, $index)">
+                      -
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col s12 downloads-header">
+              Videos ({{episode.videos.length}})
+              <div class="chip right" ng-click="addVideo(episode.videos)">
+                +video
+              </div>
+            </div>
+            <div class="col s4" ng-repeat="video in episode.videos">
+              <div class="input-field col s5">
+                <input id="server" ng-model="video.server" type="text" class="validate" required>
+                <label for="server">Server</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="url" ng-model="video.url" type="text" class="validate" required>
+                <label for="url">Url</label>
+              </div>
+              <div class="col s1 no-padding">
+                <div class="chip" ng-click="removeVideo(episode.videos, $index)">
+                  -
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col s12">
+              <!-- deshabilitado temporalmente -->
+              <div class="chip right" ng-click="onDeleteEpisode(episode, $index)">
+                Eliminar episodio
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="chip" ng-click="addEpisode()">+episode</div>
+        </div>
+
+        <!-- Deshabilitado temporalmente  -->
+        <!-- <div class="col s12">
+          <a class="btn" ng-click="saveEpisodes()">GUARDAR</a>
+        </div> -->
+      
+      </div>
+    </div>
+    
+    <!-- Edicion de calidades -->
+    <div class="col s12 no-padding">
+      <div class="row serie-episodes">
+        <div class="col s12 header">
+          Calidades
+          <div class="chip right" ng-click="openQualityNewModal()">
+            +calidad
+          </div>
+        </div>
+
+        <div class="col s12 no-padding episode-header">
+          <div class="col s12" ng-click="showQualities = !showQualities" ng-init="showQualities = false">
+            Mostrar/Ocultar
+          </div>
+
+          <div class="col s12 episode-shown" ng-show="showQualities"> 
+            <div class="col s4" ng-repeat="quality in qualities track by $index">
+              <div class="col s12">
+                {{quality}}
+                <div class="chip" ng-click="onEditQuality(quality)">
+                  /
+                </div>
+                <div class="chip" ng-click="onDeleteQuality(quality)">
+                  -
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <a class="btn-floating btn-large btn-flat button-edition-cancel tooltipped"
+     ng-click="onCloseEdition()"
+     tooltipped data-position="top"
+     data-delay="50"
+     data-tooltip="Cancelar">
+     <i class="material-icons">clear</i>
+  </a>
+
+</div>
+
+<div class="fixed-action-btn">
+  <button class="btn-floating btn-large blue waves-effect waves-light tooltipped"
+     ng-disabled="serieForm.$invalid"
+     ng-click="save()"
+     tooltipped data-position="top"
+     data-delay="50"
+     data-tooltip="Guardar">
+    <i class="material-icons">save</i>
+  </button>
+</div>
+
+<div ng-include="'/modules/series/views/animes-quality-edition.client.view.html'"></div>
+<div ng-include="'/modules/series/views/animes-quality-deletion.client.view.html'"></div>
+<div ng-include="'/modules/series/views/animes-group.client.view.html'"></div>

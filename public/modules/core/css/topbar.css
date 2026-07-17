@@ -1,0 +1,249 @@
+topbar nav {
+  height: 50px !important;
+  line-height: 50px !important;
+  position: fixed;
+  top: 0;
+  color: #eee;
+  background: #fff;
+  z-index: 3;
+}
+
+topbar .container {
+  width: 95% !important;
+}
+
+topbar nav i {
+  height: 50px !important;
+  line-height: 50px !important;
+}
+
+topbar ul li {
+  float: left;
+  height: 50px;
+}
+
+topbar ul li a  {
+  height: 50px;
+  line-height: 47px;
+  color: #C3C3C3;
+  padding: 0 15px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: color .28s ease;
+}
+
+topbar ul li:hover a {
+  color: #4B4B4B;
+  background: #fff;
+}
+
+topbar .left .logo-picture-frame {
+  padding: 4px 15px;
+  width: 155px;
+}
+
+topbar .left .logo-picture-frame .logo-picture {
+  height: 16px;
+}
+
+topbar .left .option a {
+  letter-spacing: 1.5px;
+  font-weight: 200;
+  font-size: 13px;
+}
+
+topbar .left .option i {
+  padding-right: 10px;
+  float: left;
+  font-size: 1.2rem !important;
+}
+
+/* TODO: Fix :) */
+/*
+topbar .left .option.selected  {
+  border: 3px solid #FC6769;
+  border-width: 0 0 3px 0;
+  color: #4B4B4B;
+}
+*/
+
+topbar .right .divider {
+  height: 50px;
+  background: #fff;
+  padding-left: 20px;
+  border-left: 1px solid #eee;
+}
+
+topbar .right .profile-picture-container {
+  padding: 0;
+  height: 34px;
+  width: 34px;
+  margin: 8px 0;
+}
+
+topbar .right .profile-picture {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+topbar .right .username {
+  max-width: 150px;
+  color: #4c4c4c;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+topbar .right .options-icon-container {
+  padding: 0;
+  width: 20px;
+  color: #000;
+}
+
+topbar .right .options-icon-container i {
+  font-size: 1.2rem !important;
+  height: 50px;
+}
+
+topbar .right .login-btn a {
+  box-shadow: initial;
+  height: 33px;
+  line-height: 33px;
+  font-weight: 400;
+}
+
+/* mobile topbar */
+
+topbar .left .menu {
+  height: 50px;
+}
+
+topbar .left .mobile-logo-picture-frame {
+  padding: 5px 0;
+}
+
+topbar .right .right-space {
+  padding-right: 15px;
+}
+
+topbar .right .login-icon {
+  color: #FF6666;
+  padding: 0;
+}
+
+/* mobile topbar end */
+
+
+/* options menu */
+
+topbar .options-menu .subtitle {
+  font-size: 14px;
+  color: #666666;
+  line-height: 50px;
+  width: 155px;
+  padding: 0;
+}
+
+topbar .options-menu .subtitle:hover {
+  background-color: #eee;
+}
+
+topbar .options-menu .subtitle i {
+  font-size: 1.4rem;
+  padding: 0 0 0 10px;
+}
+
+topbar .options-menu .material-icons {
+  float: left;
+}
+
+topbar .options-menu .subtitle span {
+  padding: 0 15px 0 10px;
+}
+
+/* options menu end */
+
+
+/* searcher */
+
+topbar .topbar-searcher {
+  border-bottom: solid 1px #dfdfdf; 
+}
+
+topbar .topbar-searcher nav {
+  color: #767474 !important;
+  background: #fff !important;
+  box-shadow: none;
+}
+
+topbar .topbar-searcher nav input {
+  font-size: 15px;
+  margin: 0 !important;
+}
+
+topbar .topbar-searcher nav input:focus {
+  border-bottom: 0 !important;
+  box-shadow: 0 0 0 0 !important;
+  background: #fff !important;
+}
+
+topbar .topbar-searcher i {
+  height: 50px;
+  color: #767474 !important;
+}
+
+topbar .topbar-searcher label i {
+  font-size: 25px;
+  background: #fff !important;
+  position: absolute;
+}
+
+/* searcher end */
+
+
+/* loading bar */
+
+topbar nav .loading-bar-container {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+/* loading bar end */
+
+
+/* searcher results */
+
+topbar .search-results-container {
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fdfdfd;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 50px;
+  overflow-y: scroll;
+}
+
+topbar .search-results-container .results-title {
+  padding: 0 0 0 16px;
+  font-size: 20px;
+  color: #4d4d4d;
+  border-bottom: 1px solid #eee;
+  margin: 16px 0;
+}
+
+topbar .search-results-container .serie-container {
+  padding: .25% !important;
+}
+
+topbar .search-results-container .search-results-end {
+  height: 80px;
+}
+
+/* searcher results end */

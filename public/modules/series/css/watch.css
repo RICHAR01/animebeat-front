@@ -1,0 +1,171 @@
+.episode-watch {
+  margin: 0;
+}
+
+/* video player */
+
+.episode-watch .cinema-frame { /* ancho completo negro sin pasarse de navegador */
+  width: 100vw;
+  height: 56.25vw;
+  background-color: #111;
+  max-height: calc(100vh - 100px);
+}
+
+
+.cinema-frame-inner { /* cuadro de 16:9 para video */
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.ab-video-container {
+  width: 100%;
+  height: 100%;
+}
+
+
+.episode-watch .cinema-frame .vjs-video-wrap {
+  /*height: 100% !important;*/
+}
+
+.episode-watch .cinema-frame .vjs-fluid {
+  /*padding-top: 0 !important; 
+  height: 100% !important;*/
+}
+
+
+
+/*
+
+.episode-watch .cinema-frame .vjs-video-wrap {
+  height: 100% !important;
+}
+
+.episode-watch .cinema-frame .vjs-fluid {
+  padding-top: 0 !important; 
+  height: 100% !important;
+}
+*/
+
+/* video player end */
+
+
+/* episode details */
+
+.episode-watch .lower-content {
+  padding: 16px 0 0 0 !important;
+  background-color: #F6F6F6;
+}
+
+.episode-watch .lower-content .poster-container {
+  float: left;
+  width: 56px;
+  height: 80px;
+  margin-right: 16px;
+}
+
+.episode-watch .lower-content .poster-container .poster {
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+}
+
+.episode-watch .lower-content .info-container {
+  float: left;
+  width: calc(100% - 72px);
+}
+
+.episode-watch .lower-content .info-container .episode-name {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.episode-watch .lower-content .info-container .episode-name .name {
+  float: left;
+  width: calc(100% - 80px);
+  font-weight: bold;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.episode-watch .lower-content .info-container .episode-name .action-icons-container {
+  float: left;
+  width: 80px;
+  height: 40px;
+}
+
+.episode-watch .lower-content .info-container .episode-name i {
+  float: left;
+  padding-left: 15px;
+  color: #7B7A7B;
+}
+
+.episode-watch .lower-content .info-container .serie-name {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
+
+.episode-watch .lower-content .info-container .serie-name .name {
+  float: left;
+  width: calc(100% - 200px);
+  font-size: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.episode-watch .lower-content .info-container .serie-name .quality-select {
+  height: 40px;
+  min-height: initial;
+  line-height: initial;
+  float: left;
+  width: 200px;
+}
+
+.episode-watch .lower-content .info-container .serie-name .quality-select .input-field {
+  margin-top: 0;
+}
+
+.episode-watch .lower-content .info-container .serie-name .quality-select input {
+  margin-bottom: 0;
+}
+
+/* episode details end */
+
+
+/* episodes */
+
+.episode-watch .lower-content .episode-container {
+  padding: 0 0 2.5% 0 !important;
+}
+
+/* episodes end */
+
+
+@media all and (max-width: 600px) {
+  /* episode details */
+
+  .episode-watch .lower-content .info-container {
+    width: 100%;
+  }
+
+  .episode-watch .lower-content .info-container .serie-name .name {
+    width: 100%;
+  }
+
+  .episode-watch .lower-content .info-container .quality-select-container {
+    border-top: 1px solid #eee;
+    height: 40px;
+  }
+
+  .episode-watch .lower-content .info-container .quality-select-container .quality-select .input-field {
+    margin-top: 0;
+  }
+
+  /* episode details end */
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<meta charset="UTF-8">
+<title>Example for Angular Star Rating</title>
+
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>-->
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>-->
+<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+
+
+<link rel="stylesheet" href="../dist/min/main.min.css">
+<script type="text/javascript" src="../dist/min/main.min.js"></script>
+<script type="text/javascript" src="./index.js"></script>
+
+
+</head>
+<body ng-controller="myCtrl">
+<div>
+  <h2>Demo</h2>
+
+  <div>
+    <div>
+      <angular-star-rating max="maxValue" value='ratingValue' hover='changeOnHover'
+                           is-readonly='isReadonly'></angular-star-rating>
+    </div>
+    <div>
+      <p>Readonly:
+        <input type='checkbox' ng-model='isReadonly'/> {{isReadonly}}
+      </p>
+
+      <p>Rating value change on mouse hover:
+        <input type='checkbox' ng-model='changeOnHover'/> {{changeOnHover}}
+      </p>
+
+      <p>Your rating value: {{ratingValue}} / {{maxValue}}</p>
+
+      <p>
+        Max value: <input ng-model="maxValue" type="number" min="5" max="100"> (5~100 for test)
+      </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

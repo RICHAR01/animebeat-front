@@ -1,0 +1,195 @@
+<!-- series relacionadas -->
+<div class="col s12 rainer" ng-repeat="seri in relatedSeries">
+  <div class="frame">
+
+    <img class="postaru" ng-src="{{seri.poster}}">
+
+    <div class="titure limit">
+      <div class="sub">
+        {{seri.type}}
+      </div>
+      <div>
+        {{seri.name}}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!--
+.rainer {
+  padding: 0 !important;
+  margin-bottom: 10px;
+}
+
+.rainer .frame {
+  padding-bottom: 44.9%;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+
+.rainer .titure {
+  -webkit-transition: background-color .2s ease;
+  -moz-transition: background-color .2s ease;
+  -ms-transition: background-color .2s ease;
+  -o-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+  line-height: 1;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 11px;
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .8) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .8) 100%);
+  font-size: 15px;
+  line-height: 16px;
+  text-shadow: 1px 1px 2px #1B1C1D;
+  color: #f9f9f9;
+}
+
+.rainer .sub {
+  text-transform: capitalize;
+  font-size: 12px;
+}
+
+.rainer .title .limit {
+  -webkit-transition: max-height .3s;
+  -moz-transition: max-height .3s;
+  -ms-transition: max-height .3s;
+  -o-transition: max-height .3s;
+  transition: max-height .3s;
+  max-height: 16px;
+  overflow: hidden;
+}
+
+.rainer:hover .title .limit {
+  max-height: 9rem;
+}
+
+.rainer .postaru {
+  max-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: -50%;
+}
+-->
+
+
+
+
+
+<!-- citas de personajes -->
+<div class="col l3 m3 s12">
+  <!-- citas -->
+  <div class="col s12 no-padding">
+    <div class="block">
+      <div class="block-title right">
+        Citas
+      </div>
+      <div class="block-content-no-bottom">
+        <div class="quote" ng-repeat="quote in quotes track by $index">
+          <div class="name">
+            "{{quote.name}}"
+          </div>
+          <span class="author">
+            - {{quote.author}}
+          </span>
+          <div class="like-box">
+            <span class="like-button">
+              <i class="material-icons">favorite_border</i>
+            </span>
+            <div class="like-divider"></div>
+            <span class="total-likes">
+              47 Likes
+            </span>
+          </div>
+        </div>
+        <div class="view-more">
+          <a href="">
+            Ver Más Citas
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 
+
+.quote {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.quote .name {
+  margin-bottom: 10px;
+}
+
+.quote .author {
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.quote .like-box {
+  float: right;
+  position: relative;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.quote .like-box .like-button {
+  padding-right: 5px;
+  color: #b4b4b4;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.quote .like-box .like-button:hover {
+  color: #55B2F3 !important;
+}
+
+.quote .like-box .like-button i {
+  font-size: 1.3rem;
+  float: left;
+  line-height: 11px;
+}
+
+
+
+
+.like-divider {
+  position: absolute;
+  width: 1px;
+  background: #ddd;
+  top: 0;
+  bottom: -10px;
+  display: inline-block;
+}
+
+.total-likes {
+  padding-left: 10px;
+  color: #b4b4b4;
+}
+
+.view-more {
+  text-align: center;
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+
+
+ -->
+
+<!-- TODO: Mejorar reproductor -->
+ <a href="http://www.scriptsmashup.com/Video_Skin_Generator/Videojs/videojs-skin-generator.html">credor</a> 

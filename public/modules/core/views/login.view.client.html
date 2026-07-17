@@ -1,0 +1,137 @@
+<div id="login-modal" class="modal login-modal">
+	<i class="material-icons close-modal-icon modal-action modal-close">clear</i>
+
+  <div class="row no-margin">
+
+    <!-- login form -->
+    <form name="loginForm"
+          class="col s12 m7 l7 form-container"
+          ng-if="loginScope.view === 'login'">
+
+      <div class="col s12 title">
+        Ingresa
+      </div>
+
+      <div class="input-field col s10 offset-s1">
+        <i class="material-icons prefix">person</i>
+        <input id="email" name="email" ng-model="credentials.email" type="text" required>
+        <label for="email">Usuario o email</label>
+      </div>
+
+      <div class="input-field col s10 offset-s1">
+        <i class="material-icons prefix">lock</i>
+        <input id="password" class="reduce-margin-bottom" name="password" ng-model="credentials.password" type="password" required>
+        <label for="password">Contraseña</label>
+      </div>
+
+      <div class="col s10 offset-s1 forgotten-password">
+        <a ng-href="#!/recuperar-contrasena" target="_blank">Olvidé mi contraseña</a>
+      </div>
+
+      <div class="col s10 offset-s1 button-container">
+        <button class="waves-effect waves-light btn"
+                ng-disabled="loginForm.$invalid"
+								ng-click="login()">
+          INGRESAR
+        </button>
+      </div>
+
+			<div class="col s10 offset-s1 button-social-container">
+        <button g-login
+								class="waves-effect waves-light btn btn-google">
+					<img src="/modules/core/imgs/social-google.png" />
+					<span>Google</span>
+        </button>
+
+				<button fb-login
+								class="waves-effect waves-light btn btn-facebook">
+					<img src="/modules/core/imgs/social-facebook.png" />
+					<span>Facebook</span>
+        </button>
+      </div>
+
+      <div class="col s12 login-divider"></div>
+
+      <div class="col s12 question">
+        ¿No tienes cuenta? <span ng-click="changeView('register')">Regístrate</span>
+      </div>
+
+    </form>
+
+    <!-- register form -->
+    <form name="loginForm"
+          class="col s12 m7 l7 form-container"
+          ng-submit="singIn()"
+          ng-if="loginScope.view === 'register'">
+
+      <div class="col s12 title">
+        Registro
+      </div>
+
+      <div class="input-field col s10 offset-s1">
+        <i class="material-icons prefix">email</i>
+        <input id="email" name="email" ng-model="register.email" type="text" required>
+        <label for="email">Email</label>
+      </div>
+
+      <div class="input-field col s10 offset-s1">
+        <i class="material-icons prefix">person</i>
+        <input id="username" name="username" ng-model="register.username" type="text" required>
+        <label for="username">Nombre de usuario</label>
+      </div>
+
+      <div class="input-field col s10 offset-s1">
+        <i class="material-icons prefix">lock</i>
+        <input id="password" name="password" ng-model="register.password" type="password" required>
+        <label for="password">Contraseña</label>
+      </div>
+
+      <div class="input-field col s10 offset-s1">
+        <i class="material-icons prefix">lock</i>
+        <input id="confirmPassword" name="confirmPassword" ng-model="register.confirmPassword" type="password" data-password-verify="register.password" required>
+        <label for="confirmPassword">Confirma contraseña</label>
+      </div>
+
+      <!-- TODO: Poner espacios para error-msg, agregar icono de error. -->
+      <!-- <div class="col s10 offset-s1 prefix-err-msg" ng-show="loginForm.confirmPassword.$error.passwordVerify">
+        Las contraseñas no coinciden
+      </div> -->
+
+      <div class="col s10 offset-s1 button-container">
+        <button class="waves-effect waves-light btn"
+                ng-disabled="loginForm.$invalid">
+          REGISTRARME
+        </button>
+      </div>
+
+			<div class="col s10 offset-s1 button-social-container">
+        <button g-login
+								class="waves-effect waves-light btn btn-google">
+					<img src="/modules/core/imgs/social-google.png" />
+					<span>Google</span>
+        </button>
+
+				<button fb-login
+								class="waves-effect waves-light btn btn-facebook">
+					<img src="/modules/core/imgs/social-facebook.png" />
+					<span>Facebook</span>
+        </button>
+      </div>
+
+      <div class="col s12 login-divider"></div>
+
+      <div class="col s12 question">
+        ¿Ya tienes cuenta? <span ng-click="changeView('login')">Ingresar</span>
+      </div>
+
+    </form>
+
+    <!-- image section -->
+    <div class="col s12 m5 l5 image-container hide-on-small-only"
+         ng-class="loginScope.view === 'register' ? 'register-img' : ''">
+      <img ng-src="{{loginImage}}"/>
+    </div>
+
+  </div>
+
+</div>

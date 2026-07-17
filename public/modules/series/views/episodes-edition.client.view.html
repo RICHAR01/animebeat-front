@@ -1,0 +1,116 @@
+<div class="row episodes-edition">
+
+  <div class="container">
+
+    <div class="col s12 header">
+      <a ng-href="#!/admin/series">
+        <i class="material-icons">arrow_back</i>
+      </a>
+      <div class="title">{{serieName}}</div>
+      <div class="link">
+        <a ng-href="#!/admin/series/{{serieId}}">IR A DATOS DEL ANIME</a>
+      </div>
+    </div>
+
+    <div class="col s12 block-sliced">
+
+      <div class="col s12 title-container divisor">
+        <div class="title-box">
+          <i class="material-icons">subscriptions</i>
+          <div class="title">Episodios</div>
+        </div>
+
+        <div class="add-episode-box"
+             ng-click="onAddOrUpdateEpisode()">
+          <i class="material-icons">add_circle</i>
+          <div class="title hide-on-small-only">Agregar</div>
+        </div>
+
+         <div class="show-qualities-box" 
+              ng-click="toggleQualities()">
+          <i class="material-icons">layers</i>
+          <div class="title hide-on-small-only">Calidades</div>
+        </div>
+      </div>
+
+      <!-- edición de calidades -->
+      <div class="col s12 qualities divisor" ng-show="showQualities">
+        
+        <div class="col s12" ng-if="episodesQualities.length">
+          <div class="chip" ng-repeat="quality in episodesQualities track by $index">
+            <i class="material-icons mini-icon">play_circle_filled</i>
+            {{quality.qualityName}}-{{quality.fansubName}}-{{quality.fileTypeName}}-{{quality.mbs}}Mb
+          </div>
+        </div>
+
+        <div class="col s12" ng-if="episodesQualities.length">
+          *Estas son las calidades usadas en esta serie, para agregar/eliminar calidades sólo es necesario actualizar los episodios.
+        </div>
+
+        <div class="col s12" ng-if="!episodesQualities.length">
+          Esta serie aun no cuentan con calidades, puedes agregarlas editando los episodios.
+        </div>
+
+      </div>
+
+      <div class="col s12 main-content">
+
+        <!-- episodios -->
+        <div class="col s12 m4 l3 episode-container" ng-repeat="episode in episodes" ng-if="episodes.length">
+          <episode episode="episode"></episode>
+          <div class="col s12 options">
+            <a class="btn-floating btn-flat detail"
+               tooltipped
+               data-position="bottom"
+               data-tooltip="Descargas">
+              <i class="material-icons">cloud_download</i>
+            </a>
+            <div class="quantity">
+              {{episode.downloads.length}}
+            </div>
+            <a class="btn-floating btn-flat detail"
+               tooltipped
+               data-position="bottom"
+               data-tooltip="Videos">
+              <i class="material-icons">play_circle_outline</i>
+            </a>
+            <div class="quantity">
+              {{episode.videos.length}}
+            </div>
+            <a class="btn-floating btn-flat waves-effect waves-light option"
+               ng-click="onDeleteEpisode(episode, $index)"
+               tooltipped
+               data-position="bottom"
+               data-tooltip="Eliminar">
+              <i class="material-icons">delete</i>
+            </a>
+            <a class="btn-floating btn-flat waves-effect waves-light option"
+               ng-click="onAddOrUpdateEpisode(episode)"
+               tooltipped
+               data-position="bottom"
+               data-tooltip="Editar">
+              <i class="material-icons">edit</i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col s12" ng-if="!episodes.length">
+          <!-- TODO: Poner nuevo mensaje con icono -->
+          <message-with-icon 
+            icon-class="material-icons" 
+            icon-text="mood" 
+            title="Actualmente no se cuenta con episodios registrados." 
+            message="Si deseas agregar episodios, usa el boton agregar.">
+          </message-with-icon>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div ng-include="'/modules/series/views/episode-edition-modal.client.view.html'"></div>
+<div ng-include="'/modules/series/views/episode-deletion-modal.client.view.html'"></div>

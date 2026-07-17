@@ -1,0 +1,44 @@
+<div class="row paginator-container">
+
+  <div ng-class="{ 'right-align': rightAlign, 'left-align': leftAlign }">
+
+    <paging 
+      page="page"
+      page-size="pageSize"
+      total="total"
+      show-prev-next="{{showPrevNext}}"
+      show-first-last="{{showFirstLast}}"
+      text-first="{{textFirst}}"
+      text-last="{{textLast}}"
+      text-next="{{textNext}}"
+      text-prev="{{textPrev}}"
+      text-title-page="{{textTitlePage}}"
+      text-title-first="{{textTitleFirst}}"
+      text-title-last="{{textTitleLast}}"
+      text-title-next="{{textTitleNext}}"
+      text-title-prev="{{textTitlePrev}}"
+      text-first-class="{{textFirstClass}}"
+      text-last-class="{{textLastClass}}"
+      text-next-class="{{textNextClass}}"
+      text-prev-class="{{textPrevClass}}"
+      ul-class="{{ulClass}}"
+      active-class="{{activeClass}}"
+      disabled-class="{{disabledClass}}"
+      disabled="{{disabled}}"
+      scroll-top="{{scrollTop}}"
+      hide-if-empty="{{hideIfEmpty}}"
+      adjacent="{{adjacent}}"
+      dots="{{dots}}"
+      paging-action="changePage(page)"
+      ng-class="{ 'right-align': rightAlign, 'left-align': leftAlign }">
+    </paging>
+
+    <div class="pagination-info" 
+          ng-class="{ 'right-align': rightAlign, 'left-align': leftAlign }" 
+          ng-if="showInfo">
+      {{(pageSize * (page - 1)) + 1}}-{{(pageSize * page) < total ? (pageSize * page) : total}} de {{total}}
+    </div>
+
+  </div>
+
+</div>

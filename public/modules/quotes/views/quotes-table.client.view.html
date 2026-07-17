@@ -1,0 +1,46 @@
+<!-- TODO: Se uso mismo css que en serie -->
+
+<div class="animes-table">
+  <table class="bordered highlight">
+    <thead>
+      <tr>
+        <th>CITA</th>
+        <th>PERSONAJE</th>
+        <th>REVISADO</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="item in collection">
+        <td>{{item.quote}}</td>
+        <td>{{item.character.name}}</td>
+        <td>
+          <div class="chip green" ng-if="item.active">
+            <i class="material-icons mini-icon no-padding white-text">done</i>
+          </div>
+          <div class="chip orange" ng-if="!item.active">
+            <i class="material-icons mini-icon no-padding white-text">bubble_chart</i>
+          </div>
+        </td>
+        <td class="center-align">
+          <a class="btn-floating btn-flat waves-effect waves-light"
+             ng-href="/#!/admin/quotes/{{item.id}}"
+             tooltipped
+             data-position="bottom"
+             data-tooltip="Editar cita">
+            <i class="material-icons grey-text">edit</i>
+          </a>
+
+          <a class="btn-floating btn-flat waves-effect waves-light"
+             tooltipped
+             data-position="bottom"
+             data-tooltip="Editar"
+             ng-click="openDeletionModal(item, $index)">
+            <i class="material-icons grey-text">delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

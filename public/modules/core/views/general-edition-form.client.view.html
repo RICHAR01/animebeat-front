@@ -1,0 +1,37 @@
+<!-- TODO:Hacer bonito el editor y dinamico -->
+<div class="row no-margin">
+  <div class="col s12">
+    <h5 ng-if="!selectedItem.id">Nuevo registro</h5>
+    <h5 ng-if="selectedItem.id"">Editando "{{itemName}}"</h5>
+  </div>
+
+  <div class="col s12" ng-form="forms.itemForm">
+    <div class="col s12" input-field>
+      <input id="name" ng-model="selectedItem.name" type="text" length="100" maxlength="100" required>
+      <label for="name">Nombre</label>
+    </div>
+  </div>
+</div>
+
+<div class="fixed-action-btn second">
+  <button 
+    class="btn-floating btn-large warm-pink waves-effect waves-light"
+    ng-click="closeEditionMode()"
+    tooltipped 
+    data-position="top"
+    data-tooltip="Regresar">
+    <i class="material-icons">reply</i>
+  </button>
+</div>
+
+<div class="fixed-action-btn">
+  <button 
+    class="btn-floating btn-large warm-pink waves-effect waves-light"
+    ng-disabled="forms.itemForm.$invalid"
+    ng-click="save(selectedItem)"
+    tooltipped 
+    data-position="top"
+    data-tooltip="Guardar">
+    <i class="material-icons">save</i>
+  </button>
+</div>

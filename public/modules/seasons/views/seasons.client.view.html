@@ -1,0 +1,29 @@
+<div class="row seasons" ng-show="isContentLoaded">
+
+  <!-- serie banner -->
+  <div class="col s12 no-padding">
+    <serie-banner serie="favoriteSerie" banner-title="'Favorito de la temporada pasada'"></serie-banner>
+  </div>
+  
+  <!-- seasons container -->
+  <div class="col s12 ab-container">
+    
+    <!-- seasons -->
+    <div class="col s12 no-padding" ng-repeat="season in seasons">
+
+      <section-title section-title="season.name +  ' ' + season.year"></section-title>
+
+      <a class="col l2 m3 s6 serie-container" href="#!/series/{{serie.id}}" ng-repeat="serie in season.series">
+        <serie serie="serie"></serie>
+      </a>
+
+    </div>
+
+    <!-- TODO: Agregar loader -->
+    <load-more-bar ng-click="fetchPreviousSeason()"></load-more-bar>
+
+  </div>
+
+</div>
+
+<pre-loader ng-show="!isContentLoaded"></pre-loader>

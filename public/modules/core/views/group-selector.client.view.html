@@ -1,0 +1,62 @@
+<div class="modal-content row no-margin">
+
+  <h5>Agrega a grupo por Id Grupo o anexa a grupo de serie existente</h5>
+
+  <!-- search form -->
+  <div class="col s4" input-field>
+    <input id="searchGroupId" ng-model="searchParams.groupId" type="text" length="10" maxlength="10">
+    <label for="searchGroupId">Buscar por Id Grupo</label>
+  </div>
+
+  <div class="col s1 no-padding">
+    <a class="btn-floating btn-large waves-effect waves-light"
+       ng-click="seachSeriesByGroupId()"
+       tooltipped data-position="bottom" 
+       data-tooltip="Buscar por id grupo">
+      <i class="material-icons">search</i>
+    </a>
+  </div>
+
+  <div class="col s1 no-padding">
+    <a class="btn-floating btn-large waves-effect waves-light"
+       ng-click="generateNewGroupId()"
+       tooltipped data-position="bottom" 
+       data-tooltip="Generar nuevo Id Grupo">
+      <i class="material-icons">playlist_add</i>
+    </a>
+  </div>
+
+  <div class="col s5" input-field>
+    <input id="searchGroupName" ng-model="searchParams.serieName" type="text" length="100" maxlength="100">
+    <label for="searchGroupName">Buscar serie</label>
+  </div>
+
+  <div class="col s1 no-padding">
+    <a class="btn-floating btn-large waves-effect waves-light"
+       ng-click="seachSeriesByName()"
+       tooltipped data-position="bottom" 
+       data-tooltip="Buscar por nombre de serie">
+      <i class="material-icons">search</i>
+    </a>
+  </div>
+  <!-- search form end -->
+
+  <!-- search results -->
+  <div class="col s12" ng-if="groupSeries.length">
+    <div class="col s12 search-result"
+         ng-class="serieResponse.groupId ? 'valid-serie' : ''"
+         ng-click="onGroupIdSelected(serieResponse.groupId)"
+         ng-repeat="serieResponse in groupSeries">
+      {{serieResponse.name}}
+    </div>
+  </div>
+  <div class="col s12" ng-if="!groupSeries.length">
+    <!-- TODO:Usar directiva de icono -->
+    Sin coincidencias...
+  </div>
+  <!-- search results end -->
+
+</div>
+<div class="modal-footer">
+  <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+</div>

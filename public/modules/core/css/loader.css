@@ -1,0 +1,8 @@
+loader .loader-container {
+  width: 100%;
+  text-align: center;
+}
+
+loader .spinner-default-only {
+  border-color: #FF6666;
+}

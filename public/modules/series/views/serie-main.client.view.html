@@ -1,0 +1,440 @@
+<section class="row serie-main" ng-show="isContentLoaded">
+
+  <!-- parallax -->
+  <div class="col s12 no-padding parallax-container">
+    <div parallax>
+      <img ng-src="{{serie.backgroundImage}}" img-err-src="http://img05.deviantart.net/9020/i/2012/080/e/d/black_rock_shooter_wallpaper_by_belkirion-d4thbfv.jpg">
+    </div>
+
+    <div class="white-layer"></div>
+
+    <div class="col s12 parallax-content">
+
+			<div class="stars-percentage" ng-style="starsPercentage">
+	      <div class="stars-filled-container">
+	        <i class="material-icons">star</i>
+	        <i class="material-icons">star</i>
+	        <i class="material-icons">star</i>
+	        <i class="material-icons">star</i>
+	        <i class="material-icons">star</i>
+	      </div>
+			</div>
+
+			<div class="stars-bordered-container">
+        <i class="material-icons">star_border</i>
+        <i class="material-icons">star_border</i>
+        <i class="material-icons">star_border</i>
+        <i class="material-icons">star_border</i>
+        <i class="material-icons">star_border</i>
+      </div>
+
+      <div class="btns-container">
+        <!-- TODO: Eliminar diligentemente css/js -->
+        <!--
+        <a class="waves-effect waves-light btn btn-single-icon" ng-click="toggleContent()">
+          <i class="material-icons">info_outline</i>
+        </a>
+        -->
+				<a class="waves-effect waves-light btn btn-rate" ng-click="showRateModal()">
+					<i class="material-icons" ng-if="!userSerieRate">star_border</i>
+					<img
+						class="emoticon"
+						src="http://emoticoner.com/files/emoticons/milk-bottle/hero-milk-bottle-emoticon.gif"
+						ng-if="userSerieRate.rate && userSerieRate.rate === 'bad'"
+					/>
+					<img
+						class="emoticon"
+						src="http://emoticoner.com/files/emoticons/milk-bottle/grinning-milk-bottle-emoticon.gif"
+						ng-if="userSerieRate.rate && userSerieRate.rate === 'meh'"
+					/>
+					<img
+						class="emoticon"
+						src="http://emoticoner.com/files/emoticons/milk-bottle/victory-sign-milk-bottle-emoticon.gif"
+						ng-if="userSerieRate.rate && userSerieRate.rate === 'good'"
+					/>
+					<img
+						class="emoticon"
+						src="http://emoticoner.com/files/emoticons/milk-bottle/happy-milk-bottle-emoticon.gif"
+						ng-if="userSerieRate.rate && userSerieRate.rate === 'great'"
+					/>
+					<img
+						class="emoticon"
+						src="http://emoticoner.com/files/emoticons/milk-bottle/in-love-milk-bottle-emoticon.gif"
+						ng-if="userSerieRate.rate && userSerieRate.rate === 'perfect'"
+					/>
+        </a>
+        <a class="waves-effect waves-light btn btn-single-icon" ng-click="changeFavoriteStatus()">
+          <i class="material-icons">{{serieFavorite ? 'favorite' : 'favorite_border'}}</i>
+        </a>
+        <a class="waves-effect waves-light btn btn-icon show-only-space">
+          <i class="material-icons right">{{!updatingStatus ? 'keyboard_arrow_down' : 'cached'}}</i>
+          {{serieStatus ? serieStatus : 'Agregar a lista'}}
+        </a>
+      </div>
+
+      <div class="main-content" ng-show="!hideMainContent">
+        <div class="poster-container no-padding">
+          <img class="poster" ng-src="{{serie.poster}}" img-err-src="/modules/core/imgs/poster-err.jpg" ng-if="serie.poster"/>
+          <img class="poster" ng-src="/modules/core/imgs/poster-err.jpg" ng-if="!serie.poster"/>
+        </div>
+
+        <div class="description-container">
+
+          <div class="season-and-year">
+            <span ng-switch="serie.season">
+              <span ng-switch-when="spring">Primavera</span>
+              <span ng-switch-when="summer">Verano</span>
+              <span ng-switch-when="autumn">Otoño</span>
+              <span ng-switch-when="winter">Invierno</span>
+            </span>
+            <span>{{serie.year}}</span>
+          </div>
+
+          <div class="title">
+            {{serie.name}}
+          </div>
+
+          <div class="alternative-title">
+            {{serie.japaneseName}}
+          </div>
+
+          <div class="details-container hide-on-small-only">
+            <div class="detail">
+              <i class="material-icons">videocam</i>
+              <div class="subtitle">
+                <span ng-switch="serie.type">
+                  <span ng-switch-when="serie">Serie</span>
+                  <span ng-switch-when="ova">Ova</span>
+                  <span ng-switch-when="special">Especial</span>
+                  <span ng-switch-when="movie">Película</span>
+                </span>
+              </div>
+            </div>
+            <div class="detail">
+              <i class="material-icons">video_library</i>
+              <div class="subtitle">
+                {{serie.chaptersNumber}} {{serie.chaptersNumber > 1 ? 'Episodios' : 'Episodio'}}
+              </div>
+            </div>
+            <div class="detail">
+              <i class="material-icons">timelapse</i>
+              <div class="subtitle">
+                {{serie.minutes}} Minutos
+              </div>
+            </div>
+            <div class="detail">
+              <i class="material-icons">local_movies</i>
+              <div class="subtitle">
+                {{serie.studio.name}}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mobile-details hide-on-med-and-up">
+          <span ng-switch="serie.type">
+            <span ng-switch-when="serie">Serie</span>
+            <span ng-switch-when="ova">Ova</span>
+            <span ng-switch-when="special">Especial</span>
+            <span ng-switch-when="movie">Película</span>
+          </span>
+          • {{serie.chaptersNumber}} {{serie.chaptersNumber > 1 ? 'Episodios' : 'Episodio'}} • {{serie.minutes}} Minutos • {{serie.studio.name}}
+        </div>
+
+      </div>
+
+      <!-- TODO: Eliminar diligentemente -->
+      <!--
+      <div class="secondary-content" ng-show="hideMainContent">
+        <div class="inner-content">
+          <div>
+            <div class="chip ng-binding ng-scope" ng-repeat="genre in serie.genres track by $index">
+              {{genre}}
+            </div>
+          </div>
+          <div class="synopsis">
+            {{serie.synopsis}}
+          </div>
+        </div>
+      </div>
+      -->
+
+    </div>
+
+  </div>
+
+
+  <!-- btn outside parallax -->
+  <div class="col s12 btn-outside-parallax-container">
+
+    <a class="waves-effect waves-light btn btn-icon"
+       data-activates="status-dropdown"
+       data-constrainwidth="true"
+       data-beloworigin="true"
+       dropdown>
+      <i class="material-icons right">{{!updatingStatus ? 'keyboard_arrow_down' : 'cached'}}</i>
+      {{serieStatus ? serieStatus : 'Agregar a lista'}}
+    </a>
+
+
+    <ul id="status-dropdown" class="dropdown-content statuses-dropdown">
+      <li ng-click="onStatusChange(status.identifier)" ng-repeat="status in statuses">
+        <a>
+          <span>{{status.name}}</span>
+        </a>
+      </li>
+      <li ng-click="onStatusChange('delete')" ng-if="serieStatus">
+        <a>
+          <span>Eliminar</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+
+  <div class="col s12 lower-content">
+    <div class="col s12 ab-container">
+
+      <!-- left container -->
+      <div class="col s12 m9 l9 no-padding">
+
+        <!-- main content -->
+        <div class="col s12 no-padding">
+          <div class="block">
+            <div class="white">
+              <ul class="ab-tabs" tabs>
+                <li class="tab">
+                  <a class="active" href="#episodes">Episodios</a>
+                </li>
+                <li class="tab" ng-click="fetchQuotes()">
+                  <a href="#comming-son">Descargas</a>
+                </li>
+                <li id="reactions-tab" class="tab" ng-click="fetchReactions()">
+                  <a href="#reactions">Reacciones</a>
+                </li>
+                <li id="quotes-tab" class="tab" ng-click="fetchQuotes()">
+                  <a href="#quotes">Citas</a>
+                </li>
+                <li class="tab" ng-click="fetchCharacters()">
+                  <a href="#characters">Personajes</a>
+                </li>
+                <li class="tab">
+                  <a href="#details">Detalle</a>
+                </li>
+              </ul>
+
+              <div class="ab-tabs-line"></div>
+            </div>
+            <div class="block-content">
+
+              <div id="episodes" class="col s12 no-padding episodes">
+
+                <div class="col l4 m6 s12 episode-container" ng-repeat="episode in serie.episodes" ng-if="serie.episodes.length">
+                  <episode episode="episode"></episode>
+                </div>
+
+                <message-with-icon
+                  icon-class="material-icons"
+                  icon-text="ondemand_video"
+                  icon-size="60"
+                  title="Aún no hay episodios disponibles, estarán proximamente..."
+                  ng-if="!serie.episodes.length">
+                </message-with-icon>
+
+              </div>
+
+              <div id="characters" class="col s12 no-padding characters">
+
+                <div class="col l20percent m3 s6 character-container" ng-repeat="character in characters" ng-if="characters.length">
+                  <character character="character"></character>
+                </div>
+
+                <message-with-icon
+                  icon-class="material-icons"
+                  icon-text="person_pin"
+                  icon-size="60"
+                  title="No hay personajes de esta serie disponibles."
+                  ng-if="!characters.length">
+                </message-with-icon>
+
+              </div>
+
+              <div id="quotes" class="col s12 no-padding quotes">
+                <create-new-btn message="'Crear nueva cita'" ng-click="onNewQuote()"></create-new-btn>
+
+                <div class="col s12 quote-container" ng-repeat="quote in quotes" ng-if="quotes.length">
+									<quote
+										quote="quote"
+										show-favorites="true"
+										current-user-id="currentUserId"
+										on-create-quote-favorite="onCreateQuoteFavorite"
+										on-delete-quote-favorite="onDeleteQuoteFavorite">
+									</quote>
+                </div>
+
+                <message-with-icon
+                  icon-class="material-icons"
+                  icon-text="format_quote"
+                  icon-size="60"
+                  title="No hay citas de personajes, puedes registrar la primera."
+                  ng-if="!quotes.length">
+                </message-with-icon>
+
+              </div>
+
+              <div id="reactions" class="col s12 no-padding reactions">
+
+                <div class="col s12 no-padding" ng-if="reactionsLoaded">
+                  <div class="col s12 no-padding">
+                    <div class="reaction-btn" ng-click="onUserReaction()" ng-if="userReaction.id">
+                      Editar Reacción
+                    </div>
+                    <div class="reaction-btn" ng-click="onDeleteUserReaction()" ng-if="userReaction.id">
+                      Eliminar
+                    </div>
+                  </div>
+
+                  <create-new-btn message="'Crear nueva reacción'" ng-click="onUserReaction()" ng-if="!userReaction.id"></create-new-btn>
+
+                  <div class="col s12 reaction-container" ng-repeat="reaction in reactions" ng-if="reactions.length">
+										<reaction
+											reaction="reaction"
+											current-user-id="currentUserId"
+                      show-favorites="true"
+											on-create-reaction-favorite="onCreateReactionFavorite"
+											on-delete-reaction-favorite="onDeleteReactionFavorite">
+										</reaction>
+                  </div>
+
+                  <message-with-icon
+                    icon-class="material-icons"
+                    icon-text="insert_comment"
+                    icon-size="60"
+                    title="No hay reacciones de esta serie, puedes ser el primero en publicarla."
+                    ng-if="!reactions.length">
+                  </message-with-icon>
+
+                </div>
+
+              </div>
+
+              <!-- TODO: Cambiar clase quotes por una nueva -->
+              <div id="details" class="col s12 no-padding quotes">
+
+                <div class="chip ng-binding ng-scope" ng-repeat="genre in serie.genres track by $index">
+                  {{genre}}
+                </div>
+                <div class="synopsis">
+                  {{serie.synopsis}}
+                </div>
+
+              </div>
+
+              <div id="comming-son" class="col s12 no-padding quotes">
+
+                <message-with-icon
+                  icon-class="material-icons"
+                  icon-text="code"
+                  icon-size="60"
+                  title="Proximamente..."
+                  ng-if="!characters.length">
+                </message-with-icon>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- related series -->
+        <div class="col s12 no-padding related-series">
+          <div class="block">
+            <div class="block-title">
+              Series recomendadas
+            </div>
+            <div class="">
+
+              <owl-carousel owl-items="relatedSeries" owl-options="owlOptions" class="owl-theme">
+                <div class="item">
+                  <a href="#!/series/{{item.id}}">
+                    <serie serie="item"></serie>
+                  </a>
+
+                </div>
+              </owl-carousel>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- comments box -->
+        <div class="col s12 no-padding">
+          <div class="block">
+            <div class="block-title">
+              Comentarios
+            </div>
+            <div class="block-content" ng-if="serie.id">
+              <disqus identifier="serie.id" title="serie.name"></disqus>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- right container -->
+      <div class="col s12 m3 l3 no-padding hide-on-small-only">
+
+        <div class="col s12 block">
+          <!-- <div class="block-title right">
+
+          </div> -->
+          <div class="">
+            <top-interactions
+							interactions="topInteractions"
+							current-user-id="currentUserId"
+							on-create-reaction-favorite="onCreateReactionFavorite"
+							on-delete-reaction-favorite="onDeleteReactionFavorite"
+							on-create-quote-favorite="onCreateQuoteFavorite"
+							on-delete-quote-favorite="onDeleteQuoteFavorite">
+						</top-interactions>
+          </div>
+        </div>
+
+        <!-- news -->
+        <!--
+        <div class="col s12 block">
+          <div class="col s12 no-padding z-depth-1">
+            <img materialboxed class="materialboxed responsive-img"
+                 data-caption="Esperabas un comentario increíble, pero era yo, Dio!!"
+                 src="https://s27.postimg.org/hu2su810j/rsz_bann_1.png"/>
+          </div>
+        </div>
+        -->
+
+        <!-- ads -->
+        <!--
+        <div class="col s12">
+          <iframe src="//ads.exdynsrv.com/iframe.php?idzone=2399615&size=468x60" width="100%" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+          <iframe src="//ads.exdynsrv.com/iframe.php?idzone=2399615&size=468x60" width="100%" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+          <iframe src="//ads.exdynsrv.com/iframe.php?idzone=2399615&size=468x60" width="100%" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+        </div>
+        -->
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<pre-loader ng-show="!isContentLoaded"></pre-loader>
+
+<div ng-include="'/modules/series/views/serie-rate-modal.client.view.html'"></div>
+<div ng-include="'/modules/series/views/serie-new-quote-modal.client.view.html'"></div>
+<div ng-include="'/modules/series/views/serie-reaction-modal.client.view.html'"></div>
+<div ng-include="'/modules/series/views/serie-delete-reaction-modal.client.view.html'"></div>

@@ -1,0 +1,201 @@
+<!--
+TODO:
+-add selected menu option class="selected"
+ -->
+
+<nav>
+
+  <!-- searcher -->
+  <div class="topbar-searcher" ng-show="isSearching">
+    <nav>
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input id="topbar-search"
+                   type="search"
+                   placeholder="Buscar..."
+                   ng-model="query"
+                   ng-change="onSearch(query)">
+            <label for="topbar-search"><i class="material-icons">search</i></label>
+            <i class="material-icons"
+               ng-click="onCloseSearch()">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <!-- topbar on large screen -->
+  <div class="container hide-on-med-and-down" ng-show="!isSearching">
+    <div class="nav-wrapper">
+
+      <ul class="left">
+        <li>
+          <a ng-href="/#!/inicio" class="logo-picture-frame">
+            <img class="logo-picture" ng-src="modules/core/imgs/logo.svg">
+          </a>
+        </li>
+        <li class="option" ng-class="{ 'selected': currentStateName === 'start' }">
+          <a ng-href="/#!/inicio">
+            <span>INICIO</span>
+          </a>
+        </li>
+        <li class="option" ng-class="{ 'selected': currentStateName === 'seasons' }">
+          <a ng-href="/#!/temporadas">
+            <span>TEMPORADAS</span>
+          </a>
+        </li>
+        <li class="option" ng-class="{ 'selected': currentStateName === 'season-airing' }">
+          <a ng-href="/#!/en-emision">
+            <span>EN EMISION</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="right">
+        <li>
+          <a ng-click="toggleSearch()">
+            <i class="material-icons">search</i>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li ng-if="user">
+          <a class="profile-picture-container" ng-href="/#!/usuarios/{{user.username}}">
+            <img
+							class="profile-picture"
+							ng-src="{{user.image}}"
+							img-err-src="/modules/core/imgs/profile.jpg"
+						/>
+          </a>
+        </li>
+        <li ng-if="user">
+          <a class="username" ng-href="/#!/usuarios/{{user.username}}">
+            <span>{{user.username}}</span>
+          </a>
+        </li>
+        <li ng-show="user">
+          <a class="options-icon-container"
+             data-activates="options-menu"
+             data-constrainwidth="false"
+             data-beloworigin="true"
+             dropdown>
+            <i class="material-icons">arrow_drop_down</i>
+          </a>
+        </li>
+        <li class="login-btn" ng-if="!user">
+          <a ng-click="showLogin()" class="waves-effect waves-light btn">Ingresar</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- options menu -->
+  <ul id="options-menu" class="dropdown-content options-menu">
+    <li>
+      <a class="subtitle" ng-href="/#!/usuarios/{{user.username}}">
+        <i class="material-icons">person</i>
+        <span>Mi perfil</span>
+      </a>
+    </li>
+    <li ng-if="user.role.name === 'admin' || user.role.name === 'manager'">
+      <a class="subtitle" ng-href="/#!/admin/series">
+        <i class="material-icons">cloud</i>
+        <span>Administración</span>
+      </a>
+    </li>
+    <li ng-click="logout()">
+      <a class="subtitle">
+        <i class="material-icons">exit_to_app</i>
+        <span>Cerrar sesión</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- topbar on med and small screen -->
+  <div class="hide-on-large-only" ng-show="!isSearching">
+    <div class="nav-wrapper">
+
+      <ul class="left">
+        <li>
+          <a class="menu"
+             data-activates="menubar"
+             data-sidenav="left"
+             data-menuwidth="250"
+             data-closeonclick="true">
+            <i class="material-icons">menu</i>
+          </a>
+        </li>
+        <li>
+          <a ng-href="/#!/inicio" class="mobile-logo-picture-frame">
+            <img class="logo-picture" ng-src="modules/core/imgs/logo.svg">
+          </a>
+        </li>
+      </ul>
+
+      <ul class="right">
+        <li>
+          <a ng-click="toggleSearch()">
+            <i class="material-icons">search</i>
+          </a>
+        </li>
+        <li ng-if="user">
+          <a class="profile-picture-container" ng-href="/#!/usuarios/{{user.username}}">
+            <img
+							class="profile-picture"
+							ng-src="{{user.image}}"
+							img-err-src="/modules/core/imgs/profile.jpg"
+						/>
+          </a>
+        </li>
+        <li ng-if="!user">
+          <a class="login-icon" ng-click="showLogin()">
+            <i class="material-icons left">input</i>
+          </a>
+        </li>
+        <li class="right-space" ng-if="user"></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div id="loading-bar-container" class="loading-bar-container"></div>
+</nav>
+
+
+<!-- search results container -->
+<div class="search-results-container" ng-show="isSearching && query">
+
+  <div class="row no-margin">
+    <div class="col s12 ab-container" ng-show="!loadingSearch">
+      <div class="col s12 results-title" ng-if="series.length">
+        Animes
+      </div>
+
+      <div class="col s12 results-title" ng-if="!series.length && shownQuery">
+        Parece que no encontramos nada relacionado con "{{shownQuery}}".
+        <!-- TODO: Set dinamic jokes -->
+        <!--
+        "Parece ser que 'lo-que-buscas' así como la hombría de X no pudo ser encontrada..."
+        -imagen kawaii expresando "no hay remedio"-
+         -->
+      </div>
+
+      <a class="col l2 m3 s6 serie-container" ng-click="toggleSearch()" href="#!/series/{{serie.id}}" ng-repeat="serie in series">
+        <serie serie="serie"></serie>
+      </a>
+
+      <div class="col s12 search-results-end"></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- sidenav -->
+<ul id="menubar" class="side-nav menubar">
+  <!-- TODO: Add design according gmail app -->
+  <navigation-drawer></navigation-drawer>
+</ul>
+
+<div ng-include="'modules/core/views/login.view.client.html'"></div>

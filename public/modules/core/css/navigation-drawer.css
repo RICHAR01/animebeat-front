@@ -1,0 +1,74 @@
+navigation-drawer {
+  background-color: #FAFAFA;
+}
+
+navigation-drawer .profile-container {
+  padding: 0 !important;
+  position: relative;
+  height: 120px;
+}
+
+navigation-drawer .profile-container .background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+navigation-drawer .profile-container .profile-picture-container {
+  position: absolute;
+  left: 16px;
+  top: 24px
+  padding: 0;
+  height: 48px;
+  width: 48px;
+  margin: 16px 0;
+}
+
+navigation-drawer .profile-container .profile-picture-container .profile-picture {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 2px 1px rgba(0,0,0,0.14), 0 1px 5px 1px rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+navigation-drawer .profile-container .username {
+  position: absolute;
+  left: 16px;
+  top: 79px;
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+}
+
+navigation-drawer .profile-container .email {
+  position: absolute;
+  left: 16px;
+  top: 93px;
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+  opacity: 0.8;
+}
+
+navigation-drawer .item {
+  padding: 0 16px !important;
+  height: 48px;
+  font-size: 13px;
+}
+
+navigation-drawer .item i {
+  width: 48px;
+  float: left;
+  color: #737373;
+  line-height: 48px;
+}
+
+navigation-drawer .item div {
+  float: left;
+  width: calc(100% - 48px);
+  line-height: 48px;
+  font-weight: bold;
+  color: #1F1F1F;
+}

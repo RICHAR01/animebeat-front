@@ -1,0 +1,82 @@
+reaction {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  padding: 8px;
+}
+
+reaction .user-picture {
+	float: left;
+	width: 55px;
+	height: 55px;
+}
+
+reaction .user-picture img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 1px solid #fff;
+	object-fit: cover;
+}
+
+reaction .message {
+	position: relative;
+	float: left;
+	max-width: calc(100% - 71px);
+	margin-left: 16px;
+	background-color: #fff;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: 0 1px 5px 0 transparent, 0 1px 4px 0 rgba(0,0,0,0.1);
+	padding: 8px 16px;
+}
+
+reaction .message .message-corner {
+	position: absolute;
+	left: -15px;
+	top: 0;
+	border-right: 8px solid #fff;
+	border-left: 8px solid transparent;
+	border-top: 0px solid #fff;
+	border-bottom: 24px solid transparent;
+}
+
+/* Note: Lo mismo que lo anterior pero para alinear a la derecha */
+
+reaction .user-picture-right {
+	float: right;
+	width: 55px;
+	height: 55px;
+}
+
+reaction .user-picture-right img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 1px solid #fff;
+	object-fit: cover;
+}
+
+reaction .message-right {
+	position: relative;
+	float: right;
+	max-width: calc(100% - 71px);
+	margin-right: 16px;
+	background-color: #fff;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: 0 1px 5px 0 transparent, 0 1px 4px 0 rgba(0,0,0,0.1);
+	padding: 8px 16px;
+}
+
+reaction .message-right .message-corner-right {
+	position: absolute;
+	right: -15px;
+	top: 0;
+	border-left: 8px solid #fff;
+	border-right: 8px solid transparent;
+	border-top: 0px solid #fff;
+	border-bottom: 24px solid transparent;
+}

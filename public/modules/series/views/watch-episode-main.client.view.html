@@ -1,0 +1,157 @@
+<div class="row episode-watch" ng-show="isContentLoaded">
+
+  <!-- video player -->
+  <div class="col s12 no-padding">
+      <div class="cinema-frame">
+
+        <div class="cinema-frame-inner">
+          
+          <!-- Note: Version 1.0 -->
+          <!-- <div class="ab-video-container" ng-if="selectedVideo.videoServerName === 'MoeStream'">
+            <video class="video-js vjs-youtube-skin" controls preload="auto" vjs-ratio="16:9"
+                   vjs-video vjs-media="mediaToggle">
+            </video>
+          </div> -->
+
+          <div id="video-iframe-container" class="ab-video-container">
+            Iframe se mostrará aquí
+          </div>
+
+        </div>
+
+      </div>
+  </div>
+
+  <!-- lower content -->
+  <div class="col s12 lower-content">
+    <div class="col s12 ab-container">
+    
+      <!-- episode details large-screen -->
+      <div class="col s12 no-padding hide-on-small-only">
+        <div class="block">
+          <div class="block-content">
+
+            <a ng-href="#!/series/{{episode.serie.id}}" class="poster-container">
+              <img class="poster" ng-src="{{episode.serie.poster}}" img-err-src="/modules/core/imgs/poster-err.jpg">
+            </a>
+            <div class="info-container">
+              <div class="episode-name">
+                <div class="name">Episodio {{episode.number}}: {{episode.name || episode.serie.name}}</div>
+                <div class="action-icons-container">
+                  <!-- TODO: Agregar cuando tengan funcionalidad -->
+                  <!--
+                  <i class="material-icons">share</i>
+                  <i class="material-icons">bookmark</i>
+                  -->
+                </div>
+              </div>
+              <div class="serie-name">
+                <div class="name">
+                  <a ng-href="#!/series/{{episode.serie.id}}">{{episode.serie.name}}</a>
+                </div>
+                <div class="quality-select" input-field>
+                  <select ng-model="selectedVideoId" ng-change="onVideoChange(selectedVideoId)" material-select watch required>
+                    <option ng-repeat="video in episode.videos" value="{{video.id}}">{{video.displayName}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- episode details mobile-screen -->
+      <div class="col s12 no-padding hide-on-med-and-up">
+        <div class="block">
+          <div class="block-content">
+            
+            <div class="info-container">
+              <div class="episode-name">
+                <div class="name">Ep {{episode.number}}: {{episode.name || episode.serie.name}}</div>
+                <div class="action-icons-container">
+                  <i class="material-icons">share</i>
+                  <i class="material-icons">bookmark</i>
+                </div>
+              </div>
+              <div class="serie-name">
+                <div class="name">
+                  <a ng-href="#!/series/{{episode.serie.id}}">{{episode.serie.name}}</a>
+                </div>
+              </div>
+              <div class="quality-select-container">
+                <div class="quality-select" input-field>
+                  <select ng-model="selectedVideoId" ng-change="onVideoChange(selectedVideoId)" material-select watch required>
+                    <option ng-repeat="video in episode.videos" value="{{video.id}}">{{video.displayName}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- left container -->
+      <div class="col s12 m9 l9 no-padding">
+
+        <!-- comments box -->
+        <div class="col s12 no-padding">
+          <div class="block">
+            <div class="block-title">
+              Comentarios
+            </div>
+            <div class="block-content" ng-if="episode.id">
+              <disqus identifier="episode.id" title="episode.name"></disqus>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- right container -->
+      <div class="col s12 m3 l3 no-padding">
+
+        <!-- next episode -->
+        <div class="col s12 no-padding">
+          <div class="block">
+            <div class="block-title">
+              Siguiente
+            </div>
+            <div class="block-content">
+              <episode episode="episode.nextEpisode" ng-if="episode.nextEpisode"></episode>
+              <span ng-if="!episode.nextEpisode">No disponible...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- episodes -->
+        <div class="col s12 no-padding">
+          <div class="block">
+            <div class="block-title">
+              Episodios
+            </div>
+            <div class="block-content-no-bottom">
+              
+              <div class="col s12 episode-container" ng-repeat="serieEpisode in episode.serie.episodes">
+                <episode episode="serieEpisode"></episode>
+              </div>
+
+              <div class="view-more">
+                <a ng-href="#!/series/{{episode.serie.id}}">
+                  Ver Todos
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<pre-loader ng-show="!isContentLoaded"></pre-loader>

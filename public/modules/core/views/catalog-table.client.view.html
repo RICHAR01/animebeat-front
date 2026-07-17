@@ -1,0 +1,44 @@
+<table class="bordered highlight">
+  <thead>
+    <tr>
+      <th ng-repeat="header in tableOptions.headers">
+        {{header}}
+      </th>
+      <th>
+        <!-- Actions header -->
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="item in collection">
+      <td ng-repeat="fieldName in tableOptions.fieldNames">
+        <span ng-if="typeof (fieldName) === object">
+          {{ item[fieldName.property][fieldName.subproperty] }}
+        </span>
+        <span ng-if="typeof (fieldName) === string">
+          {{ item[fieldName] }}
+        </span>
+      </td>
+      <td class="right-align">
+
+        <a class="btn-floating btn-flat waves-effect waves-light"
+           tooltipped
+           data-position="bottom"
+           data-tooltip="Editar"
+           data-ng-click="showEditionMode(item, $index)">
+          <i class="material-icons grey-text">edit</i>
+        </a>
+
+        <a class="btn-floating btn-flat waves-effect waves-light"
+           tooltipped
+           data-position="bottom"
+           data-tooltip="Eliminar"
+           data-ng-click="openDeletionModal(item, $index)">
+          <i class="material-icons grey-text">delete</i>
+        </a>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

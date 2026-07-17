@@ -1,0 +1,48 @@
+<div class="favorites-container">
+	<div class="fav-icon"
+			 ng-class="{'favorited': isFavorited}"
+			 ng-click="onChangeFavorite()">
+		<i class="material-icons">{{isFavorited ? 'favorite' : 'favorite_border'}}</i>
+	</div>
+
+	<a class="user-picture-mini-container"
+			 tooltipped
+			 data-position="top"
+			 data-tooltip="{{favorite.user.username}}"
+			 ng-href="/#!/usuarios/{{favorite.user.username}}"
+			 ng-repeat="favorite in favorites | limitTo:4">
+		<img
+			ng-src="{{favorite.user.image}}"
+			img-err-src="/modules/core/imgs/profile.jpg"
+		/>
+	</a>
+	<div class="more-users-btn" ng-click="showFavoritesListModal(favorites)" ng-if="favorites.length > 4">
+		<div class="quantity">{{favorites.length - 4}}</div>
+	</div>
+</div>
+
+
+<!-- Modal all favorites -->
+<div id="favorites-list-modal-{{identifier}}" class="modal">
+  <div class="modal-content row no-margin">
+    <h5>Les ha gustado la publicacion:</h5>
+
+		<div class="col s12 no-padding" >
+			<a class="user-picture-container"
+				 target="_blank"
+				 tooltipped
+				 data-position="top"
+				 data-tooltip="{{modalFavorite.user.username}}"
+				 ng-href="/#!/usuarios/{{modalFavorite.user.username}}"
+				 ng-repeat="modalFavorite in modalFavorites">
+			  <img
+					ng-src="{{modalFavorite.user.image}}"
+					img-err-src="/modules/core/imgs/profile.jpg"
+				/>
+			</a>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>

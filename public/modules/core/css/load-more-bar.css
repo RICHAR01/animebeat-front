@@ -1,0 +1,25 @@
+load-more-bar {
+  float: left;
+  width: 100%;
+  margin: 20px 0;
+}
+
+load-more-bar .load-more-container {
+  position: relative;
+  border-bottom: 1px solid #fc888a;
+}
+
+load-more-bar .load-more-title {
+  position: relative;
+  font-size: 14px;
+  left: calc(50% - 72px);
+  top: 10px;
+  padding: 0 20px;
+  background-color: #fdfdfd;
+  color: #FC6B6D;
+}
+
+load-more-bar .load-more-container-after {
+  height: 20px;
+  background-color: #fdfdfd;
+}

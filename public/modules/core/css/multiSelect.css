@@ -1,0 +1,121 @@
+.multiSelect > button {
+  background-image: none !important;
+}
+
+.multiSelect .multiSelectItem:hover {
+  background: #64b5f6 !important;
+  border: 0 !important;
+  color: #FFF !important;
+}
+
+.multiSelect .helperContainer {
+  padding: 8px 8px 13px 8px !important;
+}
+
+.multiSelect .line {
+  max-height: none !important;
+  overflow: visible !important;
+  box-sizing: inherit !important;
+}
+
+.multiSelect .inputFilter {
+  border: none !important;
+  border-bottom: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  -webkit-box-sizing: inherit !important;
+  -moz-box-sizing: inherit !important;
+  box-sizing: inherit !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.multiSelect .inputFilter:focus {
+  border: none !important;
+  border-bottom: 1px solid #1A237E !important;
+  -webkit-box-shadow: 0 1px 0 0 #5B66DA !important;
+  -moz-box-shadow: 0 1px 0 0 #5B66DA !important;
+  box-shadow: 0 1px 0 0 #5B66DA !important;
+}
+
+.checkBoxContainer {
+  padding: 0 !important;
+  overflow: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  max-height: 400px;
+}
+
+.checkBoxContainer label {
+  color: #000;
+}
+
+.multiSelect .multiSelectItem:hover label {
+  color: #FFF !important;
+}
+
+.multiSelect .clearButton {
+  top: 2px !important;
+  right: -3px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 20px;
+  background-color: #F44336 !important;
+  border: none !important;
+  color: #FFF !important;
+}
+
+.multiSelect .clearButton:hover {
+  background-color: #E45045 !important;
+}
+
+.multiSelect .clearButton:focus {
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.multiSelect button:first-child {
+  width: 100%;
+}
+
+.multiSelect .multiSelectItem:not(.multiSelectGroup).selected {
+  background-image: none !important;
+  color: #FFF;
+  cursor: pointer;
+  border: 0 !important;
+  background: #0d47a1 !important;
+}
+
+.multiSelect .multiSelectItem:not(.multiSelectGroup).selected label {
+  color: #FFF !important;
+}
+
+.multiSelect > button {
+  max-height: 50px;
+  overflow-y: auto;
+}
+
+.multiSelect > button {
+  margin-top: 7px;
+  border: none !important;
+  border-bottom: 1px solid #9e9e9e !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+}
+
+.multiSelect .checkboxLayer {
+  border-radius: 0 !important;
+  border-top: none !important;
+}
+
+.multiSelect .caret {
+  right: 10px !important;
+  top: 10px !important;
+  margin: 0 !important;
+  position: absolute ;
+  border-top: 10px solid #333 !important;
+  border-right: 5px solid transparent !important;
+  border-left: 5px solid transparent !important;
+}

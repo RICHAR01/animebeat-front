@@ -1,0 +1,50 @@
+<div id="animes-quality-edition" class="modal">
+  <div class="modal-content row">
+    <h5 class="" ng-if="!editingQuality">Seleccione una nueva "Calidad" para la serie.</h5>
+    <h5 class="" ng-if="editingQuality">Actualizando calidad '{{currentQuality}}'.</h5>
+    <div class="col s12">
+
+      <div class="col s4">
+        <label>EXT</label>
+        <select class="" ng-model="newQuality.extension" material-select watch required>
+          <option ng-repeat="extension in extensions">{{extension}}</option>
+        </select>
+      </div>
+      <div class="col s4">
+        <label>PESO</label>
+        <number-input class=""
+                      lower-bound="0"
+                      upper-bound="1000"
+                      step="10"
+                      ng-model="newQuality.space">
+        </number-input>
+        <!-- Anterior selector fijo  -->
+        <!-- <select class="" ng-model="newQuality.space" material-select watch required>
+          <option ng-repeat="space in spaces">{{space}}</option>
+        </select> -->
+      </div>
+      <div class="col s4">
+        <label>FANSUB</label>
+        <select class="" ng-model="newQuality.fansub" material-select watch required>
+          <option ng-repeat="fansub in fansubs">{{fansub}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col s12">
+      <b>Calidades existentes:</b>
+    </div>
+    <div class="col s4" ng-repeat="(key,download) in qualities" ng-show="qualities.length > 0">
+      {{download}}
+    </div>
+    <div class="col s12" ng-show="qualities.length === 0">
+      No existen calidades registradas...
+    </div>
+
+  </div>
+  <div class="modal-footer">
+      <a ng-click="addNewQuality()" class="modal-action waves-effect waves-light btn blue" ng-if="!editingQuality">Crear</a>
+      <a ng-click="updateQuality()" class="modal-action waves-effect waves-light btn blue" ng-if="editingQuality">Actualizar</a>
+      <a class="modal-action modal-close waves-effect waves-light btn-flat">Cancelar</a>
+  </div>
+</div>

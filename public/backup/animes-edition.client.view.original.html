@@ -1,0 +1,229 @@
+<div class="serie-edition row">
+
+  <div ng-if="!serie.id" class="title">Nueva serie</div>
+  <div ng-if="serie.id" class="title">Editando "{{serie.name}}"</div>
+
+  <div class="col s12 no-padding">
+    <div class="col s12 no-padding">
+      <ul tabs class="tabs">
+        <li class="tab col s6">
+          <a href="#serie" class="active">Serie</a>
+        </li>
+        <li class="tab col s6">
+          <a href="#episodes">Episodios</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="serie" class="col s12 container">
+
+      <!-- serie -->
+      <div class="col s12 no-padding">
+        <form name="serieForm" class="form-floating">
+
+          <div class="col s6" input-field>
+            <input id="name" ng-model="serie.name" type="text" length="100" maxlength="100" required>
+            <label for="name">Nombre</label>
+          </div>
+
+          <div class="col s6" input-field>
+            <input id="japaneseName" ng-model="serie.japaneseName" type="text" length="100" maxlength="100" required>
+            <label for="japaneseName">Nombre Japonés</label>
+          </div>
+
+          <div class="col s12" input-field>
+            <textarea id="synopsis" ng-model="serie.synopsis" class="materialize-textarea" length="500" maxlength="500" required></textarea>
+            <label for="synopsis">Sinopsis</label>
+          </div>
+
+          <div class="col s3" input-field>
+            <input id="chaptersNumber" ng-model="serie.chaptersNumber" restrict="number" type="text" length="4" maxlength="4" required>
+            <label for="chaptersNumber">No Episodios</label>
+          </div>
+
+          <div class="col s3" input-field>
+            <input id="minutes" ng-model="serie.minutes" restrict="number" type="text" length="2" maxlength="2" required>
+            <label for="minutes">Minutos</label>
+          </div>
+
+          <div class="col s3" input-field>
+            <select ng-model="serie.type" material-select watch required>
+              <option value="serie">Serie</option>
+              <option value="ova">Ova</option>
+              <option value="special">Especial</option>
+              <option value="movie">Película</option>
+            </select>
+            <label>Tipo</label>
+          </div>
+
+          <div class="col s3" input-field>
+            <select ng-model="serie.studioId" material-select watch required>
+              <option ng-repeat="studio in studios" value="{{studio.id}}" >{{studio.name}}</option>
+            </select>
+            <label>Estudio</label>
+          </div>
+          <!--TODO: Agregar selector con busqueda-->
+
+          <div class="col s3" input-field>
+            <select ng-model="serie.season" material-select watch required>
+              <option value="spring">Primavera</option>
+              <option value="summer">Verano</option>
+              <option value="autumn">Otoño</option>
+              <option value="winter">Invierno</option>
+            </select>
+            <label>Temporada</label>
+          </div>
+
+          <div class="col s3" input-field>
+            <select ng-model="serie.year" material-select watch required>
+              <option ng-repeat="year in options.years">{{year}}</option>
+            </select>
+            <label>Año</label>
+          </div>
+
+          <div class="col s3" input-field>
+            <select ng-model="serie.status" material-select watch required>
+              <option value="ongoing">En proceso</option>
+              <option value="finished">Terminada</option>
+            </select>
+            <label>Estado</label>
+          </div>
+
+          <div class="col s2" input-field>
+            <input id="groupId" ng-model="serie.groupId" type="text" length="10" maxlength="10">
+            <label for="groupId">Id grupo (opcional)</label>
+          </div>
+
+          <div class="col s1">
+            <a class="btn-floating btn-large waves-effect waves-light pink lighten-1"
+               ng-click="onGroupChange()">
+              <i class="material-icons">group_work</i>
+            </a>
+          </div>
+          
+          <div class="col s12" input-field>
+            <input id="poster" ng-model="serie.poster" type="text" length="150" maxlength="150" required>
+            <label for="poster">Poster</label>
+          </div>
+
+          <div class="col s12" input-field>
+            <input id="backgroundImage" ng-model="serie.backgroundImage" type="text" length="150" maxlength="150" required>
+            <label for="backgroundImage">magen de Fondo (opcional)</label>
+          </div>
+
+          <div class="col s12" input-field>
+            <input id="trailer" ng-model="serie.trailer" type="text" length="150" maxlength="150">
+            <label for="trailer">Trailer (opcional)</label>
+          </div>
+
+          <div class="col s12 m12 form-group filled">
+            <label>Géneros (opcional)</label>
+            <div isteven-multi-select
+                 input-model="genres"
+                 output-model="selectedGenres"
+                 button-label="name"
+                 item-label="name"
+                 search-property="name"
+                 tick-property ="isChecked"
+                 translation="searchInputTranslations"
+                 on-item-click="onGenreChange()"
+                 helper-elements="filter">
+            </div>
+            <!-- TODO: Agregar traducciones con decorator -->
+          </div>
+
+        </form>
+      </div>
+      <!-- serie end -->
+
+    </div>
+
+
+    <div id="episodes" class="col s12 container">
+
+      <!-- episodios -->
+      <div class="col s3 episode-container" ng-repeat="episode in episodes">
+        <episode></episode>
+        <div class="col s12 options">
+          <i class="material-icons option" 
+             tooltipped 
+             data-position="top" 
+             data-tooltip="Eliminar">
+            delete
+          </i>
+          <i class="material-icons option" 
+             tooltipped 
+             data-position="top" 
+             data-tooltip="Editar"
+             ng-click="openEpisodeEditionModal(episode)">
+            edit
+            </i>
+        </div>
+      </div>
+
+      <!-- TODO: Poner calidades en un boton arriba a la derecha, hacer diseño chulo -->
+      <!-- Edicion de calidades -->
+      <div class="col s12 no-padding">
+        <div class="row serie-episodes">
+          <div class="col s12 header">
+            Calidades
+            <div class="chip right" ng-click="openQualityNewModal()">
+              +calidad
+            </div>
+          </div>
+
+          <div class="col s12 no-padding episode-header">
+            <div class="col s12" ng-click="showQualities = !showQualities" ng-init="showQualities = false">
+              Mostrar/Ocultar
+            </div>
+
+            <div class="col s12 episode-shown" ng-show="showQualities"> 
+              <div class="col s4" ng-repeat="quality in qualities track by $index">
+                <div class="col s12">
+                  {{quality}}
+                  <div class="chip" ng-click="onEditQuality(quality)">
+                    /
+                  </div>
+                  <div class="chip" ng-click="onDeleteQuality(quality)">
+                    -
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- save -->
+<div class="fixed-action-btn">
+  <button class="btn-floating btn-large blue waves-effect waves-light tooltipped"
+     ng-disabled="serieForm.$invalid"
+     ng-click="save()"
+     tooltipped data-position="top"
+     data-delay="50"
+     data-tooltip="Guardar">
+    <i class="material-icons">save</i>
+  </button>
+</div>
+
+<div ng-include="'/modules/series/views/animes-quality-edition.client.view.html'"></div>
+<div ng-include="'/modules/series/views/animes-quality-deletion.client.view.html'"></div>
+<div ng-include="'/modules/series/views/group-selector-modal.client.view.html'"></div>
+<div ng-include="'/modules/series/views/episode-edition-modal.client.view.html'"></div>
+
+
+<!-- TODO: Agregar boton de regresar/cerrar -->
+<!--
+<a class="btn-floating btn-large btn-flat button-edition-cancel tooltipped"
+   ng-click="onCloseEdition()"
+   tooltipped data-position="top"
+   data-delay="50"
+   data-tooltip="Cancelar">
+   <i class="material-icons">clear</i>
+</a>
+-->

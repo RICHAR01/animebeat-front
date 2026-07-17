@@ -1,0 +1,22 @@
+<a class="episode" ng-href="#!/episodios/{{episode.id}}/ver">
+  <div class="wrapper">
+    <img class="picture"
+         ng-src="{{episode.image}}"
+         img-err-src="/modules/core/imgs/episode-err.jpg">
+    <div class="overlay">
+      <i class="material-icons play-icon">play_arrow</i>
+    </div>
+    <!-- 
+    <div class="top" ng-if="episode.createdAt">
+      <i class="material-icons play-icon">schedule</i>
+      <span class="time-ago"
+            am-time-ago="episode.createdAt">
+      </span>
+    </div> 
+    -->
+    <div class="info">
+      <span class="number">Ep. {{episode.number}}</span>
+      <span class="name">{{episode.name}}</span>
+    </div>
+  </div>
+</a>

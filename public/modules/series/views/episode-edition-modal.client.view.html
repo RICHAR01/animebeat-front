@@ -1,0 +1,114 @@
+<div id="episode-edition-modal" class="modal">
+  <div class="modal-content row no-margin">
+    <h5 ng-if="selectedEpisode.id">Editando episodio</h5>
+    <h5 ng-if="!selectedEpisode.id">Nuevo episodio</h5>
+    
+    <div class="col s12 no-padding" ng-form="episodeForm">
+
+      <div class="col s8" input-field>
+        <input id="name" ng-model="selectedEpisode.name" type="text" length="100" maxlength="100">
+        <label for="name">Nombre</label>
+      </div>
+
+      <div class="col s4" input-field>
+        <input id="number" ng-model="selectedEpisode.number" restrict="number" type="text" length="4" maxlength="4" required>
+        <label for="number">Número</label>
+      </div>
+
+      <div class="col s12" input-field>
+        <input id="image" ng-model="selectedEpisode.image" type="text" length="150" maxlength="150">
+        <label for="image">URL Imagen</label>
+      </div>
+
+      <div class="col s12">
+        Downloads ({{selectedEpisode.downloads.length}})
+        <div class="chip right" ng-click="addDownload()">
+          +descarga
+        </div>
+      </div>
+
+      <div class="col s12 light-border" ng-repeat="download in selectedEpisode.downloads track by $index">
+        <div class="col s3" input-field>
+          <select ng-model="download.fansubId" material-select watch required>
+            <option ng-repeat="fansub in fansubs" value="{{fansub.id}}" >{{fansub.name}}</option>
+          </select>
+          <label>Fansub</label>
+        </div>
+
+        <div class="col s3" input-field>
+          <select ng-model="download.qualityId" material-select watch required>
+            <option ng-repeat="quality in qualities" value="{{quality.id}}" >{{quality.name}}</option>
+          </select>
+          <label>Calidad</label>
+        </div>
+
+        <div class="col s3" input-field>
+          <select ng-model="download.fileTypeId" material-select watch required>
+            <option ng-repeat="fileType in fileTypes" value="{{fileType.id}}" >{{fileType.name}}</option>
+          </select>
+          <label>Tipo</label>
+        </div>
+
+        <div class="col s3" input-field>
+          <input id="mbs-{{$index}}" ng-model="download.mbs" restrict="number" type="text" length="4" maxlength="4" required>
+          <label for="mbs-{{$index}}">Mbs</label>
+        </div>
+
+        <div class="col s3" input-field>
+          <select ng-model="download.downloadServerId" material-select watch required>
+            <option ng-repeat="downloadServer in downloadServers" value="{{downloadServer.id}}" >{{downloadServer.name}}</option>
+          </select>
+          <label>Servidor</label>
+        </div>
+
+        <div class="col s8" input-field>
+          <input id="url-{{$index}}" ng-model="download.url" type="text" length="150" maxlength="150" required>
+          <label for="url-{{$index}}">URL</label>
+        </div>
+
+        <div class="col s1 no-padding">
+          <div class="chip" ng-click="removeDownload($index)">
+            -
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="col s12">
+        Videos ({{selectedEpisode.videos.length}})
+        <div class="chip right" ng-click="addVideo()">
+          +video
+        </div>
+      </div>
+
+      <div class="col s12 light-border" ng-repeat="video in selectedEpisode.videos track by $index">
+        <div class="col s3" input-field>
+          <select ng-model="video.videoServerId" material-select watch required>
+            <option ng-repeat="videoServer in videoServers" value="{{videoServer.id}}" >{{videoServer.name}}</option>
+          </select>
+          <label>Servidor</label>
+        </div>
+
+        <div class="col s8" input-field>
+          <input id="url-{{$index}}" ng-model="video.url" type="text" length="1000" maxlength="1000" required>
+          <label for="url-{{$index}}">URL</label>
+        </div>
+
+        <div class="col s1 no-padding">
+          <div class="chip" ng-click="removeVideo($index)">
+            -
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="modal-action waves-effect waves-green btn-flat"
+       ng-click="onSaveEpisode()"
+       ng-disabled="episodeForm.$invalid">Aceptar</button>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>

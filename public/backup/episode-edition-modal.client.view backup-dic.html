@@ -1,0 +1,77 @@
+<div id="episode-edition-modal" class="modal">
+    <div class="modal-content row no-margin">
+        <h5>Editando episodio</h5>
+        <div class="col s12 no-padding">
+                
+          <div class="input-field col s8">
+            <input id="name" ng-model="selectedEpisode.name" type="text" class="validate" required>
+            <label for="name">Nombre</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="number" ng-model="selectedEpisode.number" type="text" class="validate" required>
+            <label for="number">Número</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="image" ng-model="selectedEpisode.image" type="text" class="validate" required>
+            <label for="image">Imagen</label>
+          </div>
+
+          <div class="col s12 downloads-header">
+            Downloads
+          </div>
+          <div class="col s6" ng-repeat="(key, myquality) in selectedEpisode.qualities">
+            <div class="col s12">
+              {{key}} ({{myquality.length}}):
+              <div class="chip" ng-click="addServer(myquality)">
+                +
+              </div>
+            </div>
+
+            <div class="col s12 no-padding" ng-repeat="server in myquality">
+              <div class="input-field col s5">
+                <input id="server" ng-model="server.server" type="text" class="validate" required>
+                <label for="server">Server</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="url" ng-model="server.url" type="text" class="validate" required>
+                <label for="url">Url</label>
+              </div>
+              <div class="col s1 no-padding">
+                <div class="chip" ng-click="removeServer(myquality, $index)">
+                  -
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s12 downloads-header">
+            Videos ({{selectedEpisode.videos.length}})
+            <div class="chip right" ng-click="addVideo(selectedEpisode.videos)">
+              +video
+            </div>
+          </div>
+          <div class="col s6" ng-repeat="video in selectedEpisode.videos">
+            <div class="input-field col s5">
+              <input id="server" ng-model="video.server" type="text" class="validate" required>
+              <label for="server">Server</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="url" ng-model="video.url" type="text" class="validate" required>
+              <label for="url">Url</label>
+            </div>
+            <div class="col s1 no-padding">
+              <div class="chip" ng-click="removeVideo(selectedEpisode.videos, $index)">
+                -
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- <p>{{selectedEpisode}}</p> -->
+    </div>
+    <div class="modal-footer">
+        <a class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+</div>
+
+

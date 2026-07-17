@@ -1,0 +1,29 @@
+<!-- TODO: Por que no se puede usar -a- en lugar de div como en episode -->
+<div class="frame">
+  <img class="picture" ng-src="{{serie.poster}}" img-err-src="/modules/core/imgs/poster-err.jpg">
+  
+  <div class="overlay">
+    <i class="material-icons">play_arrow</i>
+   <!--  <div class="actions">
+      <span class="hov-blue action">
+        <i class="bookmark icon"></i>
+      </span>
+      <span class="hov-green action">
+        <i class="play icon"></i>
+      </span>
+    </div> -->
+  </div>
+  
+  <div class="sub title">
+    <span ng-switch="serie.type">
+      <span ng-switch-when="serie">Serie</span>
+      <span ng-switch-when="ova">Ova</span>
+      <span ng-switch-when="special">Especial</span>
+      <span ng-switch-when="movie">Película</span>
+    </span>
+  </div>
+  
+  <div class="title">
+    <div class="limit">{{serie.name}}</div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+paginator .paginator-container {
+  padding: 0 2.5%;
+  margin: 0 !important;
+}
+
+paginator paging li {
+  font-size: 14px !important;
+  color: #FC6769;
+  border-radius: 50% !important;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+paginator paging li.active {
+  background-color: #FC6769 !important;
+  color: #FFF !important;
+}
+
+paginator paging li.active a {
+
+}
+
+paginator paging li.disabled {
+  cursor: not-allowed;
+}
+
+paginator paging > li:not(.active) > a {
+
+}
+
+paginator paging li:not(.active) {
+
+}
+
+paginator paging li:hover:not(.disabled):not(.active) {
+
+}
+
+/* pagination info */
+
+paginator .pagination-info {
+  display: inline;
+  padding: 0 10px;
+  color: #1D1E20;
+  height: 60px;
+  line-height: 60px;
+}
+
+/* show only next and prev buttons */
+
+paginator .only-next-prev li {
+  display: none;
+}
+
+paginator .only-next-prev li:first-child, .only-next-prev li:last-child {
+  display: initial;
+}
+
+/* align elements */
+
+paginator .right-align {
+  float: right;
+}
+
+paginator .left-align {
+  float: left;
+}

@@ -1,0 +1,34 @@
+{
+  "name": "angular-star-rating",
+  "homepage": "https://github.com/northwalker/angular-star-rating",
+  "authors": [
+    "Northwalker <northwalker@hotmail.com>"
+  ],
+  "description": "A star rating directive for AngularJs.",
+  "main": [
+    "./dist/main.js",
+    "./dist/main.css"
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "angular": "*",
+    "font-awesome": "*"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "bf773bfd88",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "bf773bfd885ad2d487507c4538a4a2148b02d9c7"
+  },
+  "_source": "https://github.com/northwalker/angular-star-rating.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/northwalker/angular-star-rating.git"
+}

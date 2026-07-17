@@ -1,0 +1,224 @@
+<div class="row user-profile" ng-show="isContentLoaded">
+
+  <div class="col s12 background-picture-container">
+    <img
+			class="background-picture"
+			ng-src="{{user.background}}"
+			img-err-src="/modules/core/imgs/background.jpg"
+		/>
+
+    <div class="user-picture-container">
+      <img
+				ng-src="{{user.image}}"
+				img-err-src="/modules/core/imgs/profile.jpg"
+			/>
+    </div>
+
+    <div class="name">{{user.username}}</div>
+		<div class="nick-name">{{user.name}}</div>
+
+		<a ng-href="/#!/usuarios/{{user.username}}/edicion"
+			 class="update-btn"
+			 tooltipped
+			 data-position="bottom"
+			 data-tooltip="Actualizar info"
+			 ng-if="showEditBtn">
+			<i class="material-icons">edit</i>
+		</a>
+
+		<div class="tabs-container">
+			<div class="item-tab"
+					 ng-class="{ 'active': currentTabName === 'series' }"
+					 ng-click="changeSelectedTab('series')">
+				<div class="icon">
+					<i class="material-icons">video_library</i>
+				</div>
+				<div class="title">
+					SERIES
+				</div>
+			</div>
+
+			<div class="item-tab"
+					 ng-class="{ 'active': currentTabName === 'quotes' }"
+					 ng-click="changeSelectedTab('quotes')">
+				<div class="icon">
+					<i class="material-icons">format_quote</i>
+				</div>
+				<div class="title">
+					CITAS
+				</div>
+			</div>
+
+			<div class="item-tab"
+					 ng-class="{ 'active': currentTabName === 'reactions' }"
+					 ng-click="changeSelectedTab('reactions')">
+				<div class="icon">
+					<i class="material-icons">insert_comment</i>
+				</div>
+				<div class="title">
+					REACCIONES
+				</div>
+			</div>
+
+			<div class="item-tab hide-on-large-only"
+					 ng-class="{ 'active': currentTabName === 'profile' }"
+					 ng-click="changeSelectedTab('profile')">
+				<div class="icon">
+					<i class="material-icons">person</i>
+				</div>
+				<div class="title">
+					PERFIL
+				</div>
+			</div>
+
+		</div>
+
+  </div>
+
+	<div class="col 12 line-space"></div>
+
+	<div class="content-container">
+
+		<div class="left-side hide-on-med-and-down">
+			<div class="user-info-container">
+
+				<div class="line">
+					<i class="material-icons">edit</i> <span>{{user.description || 'Sin descripción...'}}</span>
+				</div>
+
+				<div class="line" ng-if="user.address">
+        	<i class="material-icons">place</i> <span>{{user.address}}</span>
+				</div>
+
+				<div class="line" ng-if="user.waifu">
+        	<i class="material-icons">favorite</i> <span>Waifu es {{user.waifu}}</span>
+				</div>
+
+				<div class="line" ng-if="user.url">
+        	<i class="material-icons">public</i> <span><a href="{{user.url}}" target="_blank">{{user.url}}</a></span>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="right-side">
+			<div class="user-series-container">
+
+				<!-- series option -->
+				<div ng-if="currentTabName === 'series'">
+
+					<!-- tabs -->
+				  <ul class="ab-tabs" tabs>
+			      <li class="tab">
+			        <a class="active" ng-click="showSeriesByStatus()" href="#all">Todos</a>
+			      </li>
+			      <li class="tab">
+			        <a href="#all" ng-click="showSeriesByStatus('watching')">Viendo</a>
+			      </li>
+			      <li class="tab">
+			        <a href="#all" ng-click="showSeriesByStatus('completed')">Terminados</a>
+			      </li>
+			      <li class="tab">
+			        <a href="#all" ng-click="showSeriesByStatus('onHold')">En espera</a>
+			      </li>
+			      <li class="tab">
+			        <a href="#all" ng-click="showSeriesByStatus('planToWatch')">Por ver</a>
+			      </li>
+			      <li class="tab">
+			        <a href="#all" ng-click="showSeriesByStatus('drop')">Abandonados</a>
+			      </li>
+			    </ul>
+
+			    <div class="ab-tabs-line"></div>
+
+					<!-- all -->
+					<div id="episodes" class="col s12 user-series-list">
+						<a class="col s12 serie-preview"
+							 href="#!/series/{{serie.serieId}}"
+							 ng-show="serie.show"
+							 ng-repeat="serie in user.series">
+						 {{serie.name}}
+						</a>
+
+						<message-with-icon
+							icon-class="material-icons"
+							icon-text="ondemand_video"
+							icon-size="60"
+							title="No hay series en este estatus"
+							ng-if="notFoundSeriesStatus">
+						</message-with-icon>
+					</div>
+
+				</div>
+
+				<div ng-if="currentTabName === 'quotes'">
+					<loader ng-if="loadingQuotes"></loader>
+
+					<div class="col s12" ng-repeat="quote in quotes" ng-if="quotes.length">
+						<quote
+							quote="quote"
+							show-favorites="false">
+						</quote>
+					</div>
+
+					<message-with-icon
+						icon-class="material-icons"
+						icon-text="format_quote"
+						icon-size="60"
+						title="Aún no haz creado ningun cita de personaje."
+						ng-if="!loadingQuotes && !quotes.length">
+					</message-with-icon>
+				</div>
+
+				<div ng-if="currentTabName === 'reactions'">
+					<loader ng-if="loadingReactions"></loader>
+
+					<div class="col s12" ng-repeat="reaction in reactions" ng-if="reactions.length">
+						<reaction
+							reaction="reaction"
+							current-user-id="currentUserId"
+							show-favorites="false">
+						</reaction>
+					</div>
+
+					<message-with-icon
+						icon-class="material-icons"
+						icon-text="insert_comment"
+						icon-size="60"
+						title="Aún no haz creado ninguna reacción."
+						ng-if="!loadingReactions && !reactions.length">
+					</message-with-icon>
+				</div>
+
+				<div ng-if="currentTabName === 'profile'">
+					<div class="user-info-container">
+
+						<div class="line">
+							<i class="material-icons">edit</i> <span>{{user.description || 'Sin descripción...'}}</span>
+						</div>
+
+						<div class="line" ng-if="user.address">
+		        	<i class="material-icons">place</i> <span>{{user.address}}</span>
+						</div>
+
+						<div class="line" ng-if="user.waifu">
+		        	<i class="material-icons">favorite</i> <span>Waifu es {{user.waifu}}</span>
+						</div>
+
+						<div class="line" ng-if="user.url">
+		        	<i class="material-icons">public</i> <span><a href="{{user.url}}" target="_blank">{{user.url}}</a></span>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<pre-loader ng-show="!isContentLoaded"></pre-loader>

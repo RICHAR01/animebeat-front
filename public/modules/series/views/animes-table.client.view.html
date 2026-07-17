@@ -1,0 +1,101 @@
+<div class="animes-table">
+  <table class="bordered highlight">
+    <thead>
+      <tr>
+        <th>NOMBRE</th>
+        <th>CAPITULOS</th>
+        <th class="hide-on-small-only">TIPO</th>
+        <th class="center-align">ESTADO</th>
+        <th class="hide-on-small-only">ESTUDIO</th>
+        <th class="hide-on-small-only">AÑO</th>
+        <th class="center-align hide-on-small-only">TEMPORADA</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="item in collection">
+        <td>{{item.name}}</td>
+        <td>{{item.chaptersNumber}}</td>
+        <td class="hide-on-small-only" ng-switch="item.type">
+          <span ng-switch-when="serie">
+            Serie
+          </span>
+          <span ng-switch-when="ova">
+            Ova
+          </span>
+          <span ng-switch-when="special">
+            Especial
+          </span>
+          <span ng-switch-when="movie">
+            Película
+          </span>
+        </td>
+        <td class="center-align" ng-switch="item.status">
+          <div class="chip green" ng-switch-when="finished">
+            <i class="material-icons mini-icon no-padding white-text">done</i>
+          </div>
+          <div class="chip orange" ng-switch-when="ongoing">
+            <i class="material-icons mini-icon no-padding white-text">bubble_chart</i>
+          </div>
+        </td>
+        <td class="hide-on-small-only">{{item.studio.name}}</td>
+        <td class="hide-on-small-only">{{item.year}}</td>
+        <td class="center-align hide-on-small-only" ng-switch="item.season">
+          <div class="chip pink lighten-1" ng-switch-when="spring">
+            <i class="material-icons mini-icon white-text">spa</i>
+            <span class="white-text">Primavera</span>
+          </div>
+
+          <div class="chip amber lighten-1" ng-switch-when="summer">
+            <i class="material-icons mini-icon white-text">beach_access</i>
+            <span class="white-text">Verano</span>
+          </div>
+
+          <div class="chip orange lighten-1" ng-switch-when="autumn">
+            <i class="material-icons mini-icon white-text">nature_people</i>
+            <span class="white-text">Otoño</span>
+          </div>
+
+          <div class="chip blue lighten-1" ng-switch-when="winter">
+            <i class="material-icons mini-icon white-text">ac_unit</i>
+            <span class="white-text">Invierno</span>
+          </div>
+        </td>
+        <td class="center-align">
+          <a class="btn-floating btn-flat waves-effect waves-light"
+             ng-href="/#!/admin/series/{{item.id}}"
+             tooltipped
+             data-position="bottom"
+             data-tooltip="Editar serie">
+            <i class="material-icons grey-text">edit</i>
+          </a>
+
+          <a class="btn-floating btn-flat waves-effect waves-light"
+             ng-href="/#!/admin/series/{{item.id}}/personajes"
+             tooltipped
+             data-position="bottom"
+             data-tooltip="Editar personajes">
+            <i class="material-icons grey-text">person_pin</i>
+          </a>
+
+          <a class="btn-floating btn-flat waves-effect waves-light"
+             ng-href="/#!/admin/series/{{item.id}}/episodios"
+             tooltipped
+             data-position="bottom"
+             data-tooltip="Editar episodios">
+            <i class="material-icons grey-text">widgets</i>
+          </a>
+
+          <a class="btn-floating btn-flat waves-effect waves-light"
+             tooltipped
+             data-position="bottom"
+             data-tooltip="Editar"
+             ng-click="openDeletionModal(item, $index)">
+            <i class="material-icons grey-text">delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

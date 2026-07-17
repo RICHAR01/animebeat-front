@@ -1,0 +1,73 @@
+<div class="row home" ng-show="isContentLoaded">
+
+  <!-- series banner -->
+  <div class="col s12 no-padding">
+    <serie-banner serie="item" ng-repeat="item in carouselSeries"></serie-banner>
+  </div>
+  
+  <!-- tabs -->
+  <div class="col s12 ab-container">
+    <ul class="ab-tabs" tabs>
+      <li class="tab">
+        <a class="active" href="#episodes">Últimos episodios</a>
+      </li>
+      <li class="tab">
+        <a href="#series">Series nuevas</a>
+      </li>
+      <!-- TODO: show when tops works -->
+      <!--
+      <li class="tab">
+        <a href="#tops">Tops</a>
+      </li>
+      -->
+    </ul>
+
+    <div class="ab-tabs-line"></div>
+  </div>
+
+  <!-- episodes -->
+  <div id="episodes" class="col s12 ab-container">
+    
+    <div class="col s12 no-padding" ng-repeat="episodeDay in episodeDays">
+      
+      <section-title section-title="'Hoy'" ng-if="episodeDay.daysAgo === 0"></section-title>
+      <section-title section-title="'Ayer'" ng-if="episodeDay.daysAgo === 1"></section-title>
+      <section-title section-title="episodeDay.humanDate" ng-if="episodeDay.daysAgo > 1"></section-title>
+
+      <div class="col s12 m4 l3 episode-container" 
+           ng-repeat="episode in episodeDay.episodes">
+        <episode episode="episode"></episode>
+      </div>
+
+    </div>
+
+    <!-- TODO: Agregar loader -->
+    <load-more-bar ng-click="fetchEpisodes()"></load-more-bar>
+
+  </div>
+
+  <!-- series -->
+  <div id="series" class="col s12 ab-container">
+    
+    <section-title section-title="'Reciente'"></section-title>
+
+    <a class="col l2 m3 s6 serie-container" href="#!/series/{{serie.id}}" ng-repeat="serie in series">
+      <serie serie="serie"></serie>
+    </a>
+
+    <!-- TODO: Agregar loader -->
+    <load-more-bar ng-click="fetchSeries()"></load-more-bar>
+
+  </div>
+
+  <!-- TODO: show when tops works -->
+  <!-- tops -->
+  <!--
+  <div id="tops" class="col s12">
+    Tops
+  </div>
+  -->
+
+</div>
+
+<pre-loader ng-show="!isContentLoaded"></pre-loader>

@@ -1,0 +1,346 @@
+<section class="row serie-main">
+
+  <div class="parallax-container">
+    <div parallax>
+      <img ng-src="{{serie.backgroundImage}}" img-err-src="http://img05.deviantart.net/9020/i/2012/080/e/d/black_rock_shooter_wallpaper_by_belkirion-d4thbfv.jpg">
+    </div>
+  </div>
+
+  <div class="col s12 higher-content">
+
+    <div class="poster-container no-padding">
+      <div class="poster-frame">
+        <img class="poster" ng-src="{{serie.poster}}" img-err-src="/modules/core/imgs/poster-err.jpg">
+      </div>
+    </div>
+
+    <div class="description-container">
+      <div class="col s12 title">
+        {{serie.name}}
+
+        <!-- TODO: Acomodar segun diseño -->
+        <i class="material-icons" ng-click="changeFavoriteStatus()">
+          {{serieFavorite ? 'favorite' : 'favorite_border'}}
+        </i>
+
+        <i class="material-icons" ng-click="saveQuote()">schedule</i>
+
+        
+
+      </div>
+
+      <div class="col s12 alternative-title">
+        {{serie.japaneseName}}
+      </div>
+
+      <div class="col s12 information">
+        <span ng-switch="serie.type">
+          <span ng-switch-when="serie">Serie</span>
+          <span ng-switch-when="ova">Ova</span>
+          <span ng-switch-when="special">Especial</span>
+          <span ng-switch-when="movie">Película</span>
+        </span>
+        • {{serie.chaptersNumber}} {{serie.chaptersNumber > 1 ? 'Episodios' : 'Episodio'}} • {{serie.minutes}} Min •
+        <span ng-switch="serie.season">
+          <span ng-switch-when="spring">Primavera</span>
+          <span ng-switch-when="summer">Verano</span>
+          <span ng-switch-when="autumn">Otoño</span>
+          <span ng-switch-when="winter">Invierno</span>
+        </span>
+         {{serie.year}} • {{serie.studio.name}}
+      </div>
+
+      <div class="col s12 status-container">
+        <!--
+        <div class="col s6 input-field" ng-click="isFavorite = !isFavorite">
+          <a class="waves-effect waves-light btn btn-favorite red accent-3">
+            <i class="material-icons left">{{isFavorite ? 'favorite' : 'favorite_border'}}</i>Favoritos
+          </a>
+        </div>
+        -->
+        <div class="col s6" ng-show="!updatingStatus">
+          <select name="serieStatus"
+                  class="input-field"
+                  material-select
+                  ng-model="serieStatus"
+                  ng-change="onStatusChange(serieStatus)"
+                  watch>
+            <option value="" ng-if="!serieStatus">Agregar a lista</option>
+            <option ng-repeat="status in statuses" value="{{status.identifier}}">{{status.name}}</option>
+            <option value="delete" ng-if="serieStatus">Eliminar</option>
+          </select>
+        </div>
+        <div class="col s6" ng-show="updatingStatus">
+          <loader size="25" 
+                  color="'blue'" 
+                  custom-class="'status-loader'">
+          </loader>
+        </div>
+      </div>
+
+      <!--
+      <div class="col s12 library-test">
+        
+        <div class="col s12 no-padding tabs-id">
+          <div id="details-tabs" class="nav nav-tabs">
+            <li class="details-li nav-item active">
+              <a class="nav-link" href="#overview" data-toggle="tab" aria-expanded="false">Información general</a>
+            </li>
+            <li class="details-li nav-item">
+              <a class="nav-link" href="#reviews" data-toggle="tab" aria-expanded="true">Episodios</a>
+            </li>
+            <li class="details-li nav-item">
+              <a class="nav-link" href="#seasons" data-toggle="tab" aria-expanded="false">Descarga</a>
+            </li>
+            <li class="details-li nav-item">
+              <a class="nav-link" href="#overview" data-toggle="tab" aria-expanded="false">Reseñas</a>
+            </li>
+            <li class="details-li nav-item">
+              <a class="nav-link" href="#overview" data-toggle="tab" aria-expanded="false">Citas</a>
+            </li>
+            <li class="details-li nav-item">
+              <a class="nav-link" href="#overview" data-toggle="tab" aria-expanded="false">Usuarios</a>
+            </li>
+          </div>
+        </div>
+
+      </div>
+      -->
+
+      <div class="col s12"></div>
+
+    </div>
+    
+  </div>
+  
+  <div class="col s12 lower-content">
+
+    <div class="col s9 no-padding">
+
+      <!-- episodes -->
+      <div class="block">
+
+        <div class="block-title">
+          Episodios
+        </div>
+
+        <div class="block-content episodes-container">
+        
+          <div class="col l4 m6 s6 episode-frame" ng-repeat="episode in serie.episodes" ng-if="serie.episodes.length">
+            <a class="item" href="#!/episodios/{{episode.id}}/ver">
+              <div class="wrapper">
+                <img class="picture" ng-src="{{episode.image}}" img-err-src="/modules/core/imgs/episode-err.jpg">
+                <div class="overlay">
+                  <i class="material-icons">play_arrow</i>
+                </div>
+
+                <div class="info">
+                  <span class="chapter-number">Ep. {{episode.number}}</span>
+                  <span class="title">{{episode.name}}</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <no-results font-size="25" 
+                      height="300" 
+                      message="Sin episodios registrados..."
+                      ng-if="!serie.episodes.length">
+          </no-results>
+
+        </div>
+
+      </div>
+      <!-- episodes end -->
+
+      <div class="col s12 no-padding">
+        <div class="block">
+          <div class="block-title">
+            Series recomendadas
+          </div>
+          <div class="block-content">
+
+            <a class="col l3 m4 s6 serie-item" href="#!/series/{{serie.id}}" ng-repeat="serie in relatedSeries">
+              <serie></serie>
+            </a>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 no-padding">
+        <div class="block">
+          <div class="block-title">
+            Comentarios
+          </div>
+          <div class="block-content">
+            <disqus identifier="serie.id" title="serie.name"></disqus>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="col s3 no-padding">
+      <div class="block">
+        <div class="block-title">
+          Descripción
+        </div>
+        <div class="block-content-no-bottom">
+          <div class="col s12 synopsis" ng-class="{'synopsis-complete': showSynopsis}">
+            {{serie.synopsis ? serie.synopsis : 'No hay sinopsis registrada...'}}
+          </div>
+          <div class="block-divider"></div>
+          <div class="view-more">
+            <a href="" ng-click="showSynopsis= !showSynopsis">
+              {{showSynopsis ? 'Ocultar' : 'Ver Más'}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s3 no-padding">
+      <div class="col s12 no-padding">
+        <div class="block">
+          <div class="block-title">
+            Géneros
+          </div>
+          <div class="block-content">
+            <div ng-if="serie.genres.length === 0">
+              Sin géneros registrados...
+            </div>
+            <div class="tag" ng-repeat="genre in serie.genres track by $index">
+              {{genre}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s3 no-padding">
+      <div class="block">
+        <div class="block-title">
+          Relacionados
+        </div>
+        <div class="block-content">
+          
+          <div class="col s12 rainer" ng-repeat="seri in relatedSeries">
+            <div class="frame">
+
+              <img class="postaru" ng-src="{{seri.poster}}">
+
+              <div class="titure limit">
+                <div class="sub">
+                  {{seri.type}}
+                </div>
+                <div>
+                  {{seri.name}}
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="col s3 no-padding">
+      <div class="col s12 no-padding">
+        <div class="block">
+          <div class="block-title">
+            Citas
+          </div>
+          <div class="block-content-no-bottom">
+            <div class="quote" ng-repeat="quote in quotes track by $index">
+              <div class="name">
+                "{{quote.name}}"
+              </div>
+              <span class="author">
+                - {{quote.author}}
+              </span>
+              <div class="like-box">
+                <span class="like-button">
+                  <i class="material-icons">favorite_border</i>
+                </span>
+                <div class="like-divider"></div>
+                <span class="total-likes">
+                  47 Likes
+                </span>
+              </div>
+            </div>
+            <div class="view-more">
+              <a href="">
+                Ver Más Citas
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+    <!--
+    <div class="col s3 no-padding">
+      <div class="col s12 no-padding">
+        <div class="block">
+          <div class="block-title">
+            Calificación
+          </div>
+          <div class="block-content">
+            <div class="col s12">
+              <div class="calificacion-test col s6">
+                8/10
+              </div>
+              <div class="calificacion-test col s6">
+                10/10
+              </div>
+
+              <div class="calificacion-test calificacion-name-test col s6">
+                ANIMACIÓN
+              </div>
+              <div class="calificacion-test calificacion-name-test col s6">
+                SOUNDTRACK
+              </div>
+
+              <div class="calificacion-test col s6">
+                7/10
+              </div>
+              <div class="calificacion-test col s6">
+                9/10
+              </div>
+
+               <div class="calificacion-test calificacion-name-test col s6">
+                HISTORIA
+              </div>
+              <div class="calificacion-test calificacion-name-test col s6">
+                PERSONAJES
+              </div>
+
+
+              <div class="calificacion-test col s12">
+                10/10
+              </div>
+              <div class="calificacion-test calificacion-name-test col s12">
+                FINAL
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+
+  <div class="col s12 p-b-10"></div>
+  </div>
+
+
+
+</section>

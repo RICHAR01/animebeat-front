@@ -1,0 +1,26 @@
+searcher .searcher {
+  padding: 0 2.5% 3px 2.5%;
+  border-bottom: solid 1px #fff; 
+}
+
+searcher .searcher nav {
+  background: #fff !important;
+  box-shadow: none;
+}
+
+searcher .searcher nav input {
+  margin: 0 !important;
+  color: #444;
+}
+
+searcher .searcher nav input:focus {
+  border-bottom: 0 !important;
+  box-shadow: 0 0 0 0 !important;
+  background: #fff !important;
+}
+
+searcher .searcher label i {
+  color: #767474 !important;
+  background: #fff !important;
+  position: absolute;
+}

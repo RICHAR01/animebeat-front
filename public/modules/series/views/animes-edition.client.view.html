@@ -1,0 +1,173 @@
+<div class="row serie-edition">
+
+  <div class="col s12 container" ng-form="serieForm">
+
+    <div class="col s12 header">
+      <a ng-href="#!/admin/series">
+        <i class="material-icons">arrow_back</i>
+      </a>
+      <div class="title" ng-if="!serie.id">Nuevo contenido</div>
+      <div class="title" ng-if="serie.id">{{serie.name}}</div>
+      <div class="link" ng-if="serie.id">
+        <a ng-href="#!/admin/series/{{serie.id}}/episodios">IR A EPISODIOS</a>
+      </div>
+    </div>
+
+    <div class="col s12 serie-block">
+
+      <div class="col s12 title-container">
+        <i class="material-icons">ondemand_video</i>
+        <div class="title">Datos del anime</div>
+      </div>
+
+      <div class="col s12 m6 l6" input-field>
+        <input id="name" ng-model="serie.name" type="text" length="100" maxlength="100" required>
+        <label for="name">Nombre</label>
+      </div>
+
+      <div class="col s12 m6 l6" input-field>
+        <input id="japaneseName" ng-model="serie.japaneseName" type="text" length="100" maxlength="100" required>
+        <label for="japaneseName">Nombre en Japonés</label>
+      </div>
+
+      <div class="col s12" input-field>
+        <textarea id="synopsis" ng-model="serie.synopsis" class="materialize-textarea" length="1000" maxlength="1000" required></textarea>
+        <label for="synopsis">Sinopsis</label>
+      </div>
+
+      <div class="col s6 m3 l3" input-field>
+        <input id="chaptersNumber" ng-model="serie.chaptersNumber" restrict="number" type="text" length="4" maxlength="4" required>
+        <label for="chaptersNumber">No Episodios</label>
+      </div>
+
+      <div class="col s6 m3 l3" input-field>
+        <input id="minutes" ng-model="serie.minutes" restrict="number" type="text" length="3" maxlength="3" required>
+        <label for="minutes">Minutos</label>
+      </div>
+
+      <div class="col s6 m3 l3" input-field>
+        <select ng-model="serie.type" material-select watch required>
+          <option value="serie">Serie</option>
+          <option value="ova">Ova</option>
+          <option value="special">Especial</option>
+          <option value="movie">Película</option>
+        </select>
+        <label>Tipo</label>
+      </div>
+
+      <div class="col s6 m3 l3" input-field>
+        <select ng-model="serie.studioId" material-select watch required>
+          <option ng-repeat="studio in studios" value="{{studio.id}}" >{{studio.name}}</option>
+        </select>
+        <label>Estudio</label>
+      </div>
+      <!--TODO: Agregar selector con busqueda-->
+
+      <div class="col s6 m3 l3" input-field>
+        <select ng-model="serie.season" material-select watch required>
+          <option value="spring">Primavera</option>
+          <option value="summer">Verano</option>
+          <option value="autumn">Otoño</option>
+          <option value="winter">Invierno</option>
+        </select>
+        <label>Temporada</label>
+      </div>
+
+      <div class="col s6 m3 l3" input-field>
+        <select ng-model="serie.year" material-select watch required>
+          <option ng-repeat="year in options.years">{{year}}</option>
+        </select>
+        <label>Año</label>
+      </div>
+
+      <div class="col s6 m3 l3" input-field>
+        <select ng-model="serie.status" material-select watch required>
+          <option value="ongoing">En proceso</option>
+          <option value="finished">Terminada</option>
+        </select>
+        <label>Estado</label>
+      </div>
+
+      <div class="col s4 m2 l2" input-field>
+        <input id="groupId" ng-model="serie.groupId" type="text" length="10" maxlength="10">
+        <label for="groupId">Id grupo (opcional)</label>
+      </div>
+
+      <div class="col s2 m1 l1">
+        <a class="btn-floating btn-large waves-effect waves-light purple lighten-1"
+           ng-click="onGroupChange()">
+          <i class="material-icons">group_work</i>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="col s12 serie-block">
+
+      <div class="col s12 title-container">
+        <i class="material-icons">loyalty</i>
+        <div class="title">Géneros</div>
+      </div>
+
+      <div class="col s12 m12 form-group filled">
+        <label>Géneros (opcional)</label>
+        <div isteven-multi-select
+             input-model="genres"
+             output-model="selectedGenres"
+             button-label="name"
+             item-label="name"
+             search-property="name"
+             tick-property="isChecked"
+             translation="searchInputTranslations"
+             on-item-click="onGenreChange()"
+             helper-elements="filter">
+        </div>
+        <!-- TODO: Agregar traducciones con decorator -->
+      </div>
+
+    </div>
+
+    <div class="col s12 serie-block">
+
+      <div class="col s12 title-container">
+        <i class="material-icons">link</i>
+        <div class="title">URLs</div>
+      </div>
+
+      <div class="col s12 m6 l6" input-field>
+        <input id="poster" ng-model="serie.poster" type="text" length="150" maxlength="150" required>
+        <label for="poster">Poster</label>
+      </div>
+
+      <div class="col s12 m6 l6" input-field>
+        <input id="backgroundImage" ng-model="serie.backgroundImage" type="text" length="150" maxlength="150">
+        <label for="backgroundImage">Imagen de Fondo (opcional)</label>
+      </div>
+
+      <div class="col s12 m6 l6" input-field>
+        <input id="trailer" ng-model="serie.trailer" type="text" length="150" maxlength="150">
+        <label for="trailer">Trailer (opcional)</label>
+      </div>
+
+    </div>
+  
+  </div>
+
+</div>
+
+<!-- save btn -->
+<div class="fixed-action-btn">
+  <button 
+    class="btn-floating btn-large warm-pink waves-effect waves-light"
+    ng-disabled="serieForm.$invalid"
+    ng-click="save()"
+    tooltipped 
+    data-position="top"
+    data-tooltip="Guardar">
+    <i class="material-icons">save</i>
+  </button>
+</div>
+
+<!-- group selector modal -->
+<div ng-include="'/modules/series/views/group-selector-modal.client.view.html'"></div>
+

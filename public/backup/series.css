@@ -1,0 +1,181 @@
+.home-page {
+  /*
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  */
+  width: 96%;
+}
+
+.home-page .block-container {
+  padding: 1% !important;
+}
+
+.home-page .block-title {
+  position: relative;
+  margin: 0 0 10px 0;
+}
+
+.home-page .block-title .title {
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-block;
+  background: #FFF;
+  padding: 0 10px 0 0;
+  z-index: 2;
+}
+
+.home-page .block-title:after {
+  content: no-close-quote;
+  position: absolute;
+  width: 100%;
+  height: 14px;
+  bottom: 4px;
+  left: 0;
+  background: url(/modules/series/imgs/title.png) repeat;
+}
+
+.home-page .block-content {
+  box-shadow: 0 0 13px rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #dd1818 !important;
+  margin: 0 0 40px 0 !important;
+  border: 1px solid #ECECEC;
+  padding: 10px;
+}
+
+.home-page .cols-container {
+  display: inline-block;
+  width: 100%;
+}
+
+/*MainItem*/
+.serie {
+  cursor: pointer;
+  padding: .25% !important;
+  color: #f9f9f9 !important;
+}
+
+.serie .frame {
+  width: 100%;
+  padding-bottom: 144.9%;
+  position: relative;
+  /*box-shadow: 2px 4px 5px rgba(0,0,0,.3);*/
+}
+
+.serie .picture {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+/*Title*/
+.serie .title {
+  -webkit-transition: background-color .2s ease;
+  -moz-transition: background-color .2s ease;
+  -ms-transition: background-color .2s ease;
+  -o-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+  line-height: 1;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: .75rem;
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .8) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .8) 100%);
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px #1B1C1D;
+}
+
+.serie .title .limit {
+  -webkit-transition: max-height .3s;
+  -moz-transition: max-height .3s;
+  -ms-transition: max-height .3s;
+  -o-transition: max-height .3s;
+  transition: max-height .3s;
+  max-height: 1.06rem;
+  overflow: hidden;
+}
+
+.serie:hover .title .limit {
+  max-height: 9rem;
+}
+
+/*SubTitle*/
+.serie .title.sub {
+  top: 0;
+  bottom: auto;
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .8) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .8) 100%);
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: .7rem;
+}
+
+.serie .title.sub .number {
+  font-size: 1rem;
+}
+
+.serie .title.sub .time {
+  float: right;
+  font-size: .65rem;
+  margin-top: .25rem;
+}
+
+.serie .title.sub .time .icon {
+  margin: 0;
+  color: #f9f9f9;
+}
+
+/*Overlay*/
+.serie:hover .overlay {
+  opacity: 1;
+}
+
+.serie .overlay {
+  -webkit-transition: opacity .3s ease;
+  -moz-transition: opacity .3s ease;
+  -ms-transition: opacity .3s ease;
+  -o-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+  line-height: 1;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+/*Actions*/
+.serie .overlay .actions {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  margin-top: -1.25rem;
+}
+
+.serie .overlay .actions .action {
+  webkit-transition: color .2s ease;
+  -moz-transition: color .2s ease;
+  -ms-transition: color .2s ease;
+  -o-transition: color .2s ease;
+  transition: color .2s ease;
+  font-size: 2.5rem;
+  color: #f9f9f9;
+}
+
+/*Color actions*/
+.serie .overlay .actions .action.hov-blue:hover {
+  color: #2185D0;
+}
+
+.serie .overlay .actions .action.hov-green:hover {
+  color: #21BA45;
+}

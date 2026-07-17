@@ -1,0 +1,33 @@
+<div id="serie-new-quote-modal" class="modal">
+  <div class="modal-content row no-margin">
+    <h5>Nueva cita</h5>
+
+    <div class="col s12 no-padding" ng-form="quoteForm">
+
+      <div class="col s12" input-field>
+        <select ng-model="newQuote.characterId" ng-change="onCharacterChange(newQuote.characterId)" material-select watch required>
+          <option value="" ng-if="!newQuote.characterId">Seleccione personaje</option>
+          <option ng-repeat="character in characters" value="{{character.id}}" >{{character.name}}</option>
+        </select>
+        <label>Personaje</label>
+      </div>
+
+      <div class="col s12" input-field>
+        <textarea id="quote" ng-model="newQuote.quote" class="materialize-textarea" length="1000" maxlength="1000" required></textarea>
+        <label for="quote">Cita</label>
+      </div>
+
+      <div class="col s12">
+        <quote quote="newQuote" show-favorites="false"></quote>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="modal-action waves-effect waves-green btn-flat"
+            ng-click="onSaveQuote()"
+            ng-disabled="quoteForm.$invalid">Crear</button>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="row season-airing" ng-show="isContentLoaded">
+
+  <!-- serie banner -->
+  <div class="col s12 no-padding">
+    <serie-banner serie="favoriteSerie" banner-title="'Favorito en emisión'"></serie-banner>
+  </div>
+  
+  <!-- season container -->
+  <div class="col s12 ab-container">
+    
+    <section-title section-title="'En emisión'"></section-title>
+
+    <!-- season -->
+    <div class="col s12 no-padding">
+
+      <a class="col l2 m3 s6 serie-container" href="#!/series/{{serie.id}}" ng-repeat="serie in seasonSeries">
+        <serie serie="serie"></serie>
+      </a>
+      
+    </div>
+
+    <!-- TODO: Agregar loader -->
+    <!-- <load-more-bar ng-click="fetchPreviousSeason()"></load-more-bar> -->
+
+  </div>
+
+</div>
+
+<pre-loader ng-show="!isContentLoaded"></pre-loader>

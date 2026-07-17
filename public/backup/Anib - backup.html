@@ -1,0 +1,72 @@
+<!-- test -->
+    <!--
+    <div class="col s12">
+      
+      <div class="col s12" ng-click="isAddingQuality = !isAddingQuality" ng-init="isAddingQuality = false">
+        <div class="chip right">Agregar calidad</div>
+      </div>
+
+
+      <div class="col s12 red" ng-show="isAddingQuality">
+        <div class="col s6 no-padding">
+          <div class="col s4">
+            <label>EXT</label>
+            <select class="" ng-model="quality.extension" material-select watch required>
+              <option ng-repeat="extension in extensions">{{extension}}</option>
+            </select>
+          </div>
+          <div class="col s4">
+            <label>PESO</label>
+            <select class="" ng-model="quality.space" material-select watch required>
+              <option ng-repeat="space in spaces">{{space}}</option>
+            </select>
+          </div>
+          <div class="col s4">
+            <label>FANSUB</label>
+            <select class="" ng-model="quality.fansub" material-select watch required>
+              <option ng-repeat="fansub in fansubs">{{fansub}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="chip" ng-click="addQuality()">Aceptar</div>
+        </div>
+      </div>
+
+    
+      <div class="col s6" ng-repeat="(key,download) in downloads">
+
+        <div class="col s12">
+          {{key}} <div class="chip" ng-click="openQualityEdition(key)">editQuality</div>
+        </div>
+
+        <div class="col s12 no-padding" ng-repeat="episode in download">
+          <div class="col s12">
+            <div class="chip" ng-click="showEpisodes = !showEpisodes" ng-init="showEpisodes = false">
+              {{$index + 1}}
+            </div>
+            <div class="chip" ng-click="addServer(episode)">
+              +
+            </div>
+          </div>
+          <div class="col s12 no-padding" ng-repeat="server in episode" ng-show="showEpisodes">
+            <div class="input-field col s5">
+              <input id="server" ng-model="server.server" type="text" class="validate" required>
+              <label for="server">Server</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="url" ng-model="server.url" type="text" class="validate" required>
+              <label for="url">Url</label>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col s12">
+          <div class="chip" ng-click="addEpisode(download)">+episode</div>
+        </div>
+
+      </div>
+
+    </div>
+-->

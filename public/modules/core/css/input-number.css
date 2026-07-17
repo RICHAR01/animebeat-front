@@ -1,0 +1,8 @@
+.input-number input {
+  display: inline-block;
+  width: 70%;
+}
+
+.input-number button {
+  display: inline-block;
+}

@@ -1,0 +1,32 @@
+top-interactions {
+
+}
+
+top-interactions .title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+top-interactions .interactions-container {
+  float: left;
+  width: 100%;
+  padding: 8px 0 16px 0;
+}
+
+top-interactions .show-all-btn {
+	font-size: 13px;
+	color: #a8a8a8;
+	margin-top: 8px;
+	float: left;
+	width: 100%;
+	border-top: 1px solid #eee;
+	padding: 8px 16px;
+	cursor: pointer;
+	text-align: center;
+	transition: color 0.2s;
+}
+
+top-interactions .show-all-btn:hover {
+	color: #FC6769;
+}

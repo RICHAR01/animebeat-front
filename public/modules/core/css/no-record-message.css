@@ -1,0 +1,12 @@
+.record-message-container {
+  display: table;
+  height: 200px;
+  width: 100%;
+}
+
+.record-message-container .align-vertical {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 25px;
+  font-weight: 300;
+}

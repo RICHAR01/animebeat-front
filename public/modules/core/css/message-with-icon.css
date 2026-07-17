@@ -1,0 +1,21 @@
+message-with-icon .mwi-container {
+  padding: 50px 0;
+  text-align: center;
+}
+
+message-with-icon .mwi-icon {
+  color: #BDBDBD;
+  font-size: 140px !important;
+}
+
+message-with-icon .mwi-title {
+  font-size: 14px;
+  color: #7A7A7A;
+  padding: 0 20% !important;
+}
+
+message-with-icon .mwi-message {
+  font-size: 14px;
+  color: #7A7A7A;
+  padding: 10px 20% !important;
+}

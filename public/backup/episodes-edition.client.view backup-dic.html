@@ -1,0 +1,117 @@
+<div class="row episodes-edition">
+
+  <div class="container">
+
+    <div class="col s12 header">
+      <a ng-href="#!/animes">
+        <i class="material-icons">arrow_back</i>
+      </a>
+      <div class="title">{{serieName}}</div>
+      <div class="link">
+        <a ng-href="#!/animes/editar/{{serieId}}">IR A DATOS DEL ANIME</a>
+      </div>
+    </div>
+
+    <div class="col s12 block-sliced">
+
+      <div class="col s12 title-container divisor">
+        <div class="title-box">
+          <i class="material-icons">subscriptions</i>
+          <div class="title">Episodios</div>
+        </div>
+
+        <div class="add-episode-box"
+             ng-click="addEpisode()">
+          <i class="material-icons">add_circle</i>
+          <div class="title">Agregar</div>
+        </div>
+
+         <div class="show-qualities-box" 
+              ng-click="toggleQualities()">
+          <i class="material-icons">vibration</i>
+          <div class="title">Calidades</div>
+        </div>
+      </div>
+
+      <!-- edición de calidades -->
+      <div class="col s12 qualities divisor" ng-show="showQualities">
+        <div class="col s12">
+          <div class="chip right" ng-click="openQualityNewModal()">
+            <i class="material-icons mini-icon">add_circle</i> 
+            Calidad
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4" ng-repeat="quality in qualities track by $index">
+          <div class="col s12">
+            {{quality}}
+            <div class="chip" ng-click="onEditQuality(quality)">
+              <i class="material-icons mini-icon">edit</i>
+              Editar
+            </div>
+            <div class="chip" ng-click="onDeleteQuality(quality)">
+              <i class="material-icons mini-icon">delete</i>
+              Eliminar
+            </div>
+          </div>
+        </div>
+
+        <!-- TODO: Agregar mensaje cuando no hay calidades -->
+
+      </div>
+
+      <div class="col s12 main-content">
+
+        <!-- episodios -->
+        <div class="col s12 m4 l3 episode-container" ng-repeat="episode in episodes" ng-if="episodes.length">
+          <episode></episode>
+          <div class="col s12 options">
+            <a class="btn-floating btn-flat waves-effect waves-light option"
+               ng-click="onDeleteEpisode(episode, $index)"
+               tooltipped
+               data-position="bottom"
+               data-tooltip="Eliminar">
+              <i class="material-icons grey-text">delete</i>
+            </a>
+            <a class="btn-floating btn-flat waves-effect waves-light option"
+               ng-click="openEpisodeEditionModal(episode)"
+               tooltipped
+               data-position="bottom"
+               data-tooltip="Editar">
+              <i class="material-icons grey-text">edit</i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col s12" ng-if="!episodes.length">
+          <message-with-icon 
+            icon-class="material-icons" 
+            icon-text="mood" 
+            title="Actualmente no se cuenta con episodios registrados." 
+            message="Si deseas agregar episodios, usa el boton agregar.">
+          </message-with-icon>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- save btn -->
+<div class="fixed-action-btn">
+  <button 
+    class="btn-floating btn-large warm-pink waves-effect waves-light"
+    ng-click="saveEpisodes()"
+    tooltipped 
+    data-position="top"
+    data-tooltip="Guardar">
+    <i class="material-icons">save</i>
+  </button>
+</div>
+
+<div ng-include="'/modules/series/views/animes-quality-edition.client.view.html'"></div>
+<div ng-include="'/modules/series/views/animes-quality-deletion.client.view.html'"></div>
+<div ng-include="'/modules/series/views/episode-edition-modal.client.view.html'"></div>

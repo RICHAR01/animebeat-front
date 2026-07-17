@@ -1,0 +1,12 @@
+group-selector .search-result {
+  padding: 10px !important;
+  border: 1px solid #eee;
+}
+
+group-selector .search-result:hover {
+  background-color: #eee;
+}
+
+group-selector .valid-serie {
+  background-color: #f3f3f3;
+}

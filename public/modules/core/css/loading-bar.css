@@ -1,0 +1,12 @@
+#loading-bar .bar {
+  position: absolute;
+  top: 0;
+  background: #FF6666;
+}
+
+#loading-bar .peg {
+  -moz-box-shadow: #FF6666 1px 0 6px 1px;
+  -ms-box-shadow: #FF6666 1px 0 6px 1px;
+  -webkit-box-shadow: #FF6666 1px 0 6px 1px;
+  box-shadow: #FF6666 1px 0 6px 1px;
+}

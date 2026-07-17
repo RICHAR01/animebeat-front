@@ -1,0 +1,70 @@
+/* jshint ignore:start */
+
+/*!
+ * # Semantic UI 2.1.7 - Icon
+ * http://github.com/semantic-org/semantic-ui/
+ */
+
+@font-face {
+  font-family: 'Icons';
+  src: url("/modules/core/fonts/semantic-ui/icons.eot");
+  src: url("/modules/core/fonts/semantic-ui/icons.eot?#iefix") format('embedded-opentype'), 
+       url("/modules/core/fonts/semantic-ui/icons.woff2") format('woff2'), 
+       url("/modules/core/fonts/semantic-ui/icons.woff") format('woff'), 
+       url("/modules/core/fonts/semantic-ui/icons.ttf") format('truetype'), 
+       url("/modules/core/fonts/semantic-ui/icons.svg#icons") format('svg');
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
+
+i.icon {
+  display: inline-block;
+  opacity: 1;
+  margin: 0 0.25rem 0 0;
+  width: 1.18em;
+  height: 1em;
+  font-family: 'Icons';
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  text-align: center;
+  speak: none;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+i.icon.bookmark:before {
+  content: "\f02e";
+}
+
+i.icon.remove.bookmark:before {
+  content: "\f097";
+}
+
+i.icon.bookmark.outline:before {
+  content: "\f097";
+}
+
+i.icon.play:before {
+  content: "\f04b";
+}
+
+i.icon.wait:before {
+  content: "\f017";
+}
+
+i.icon.check:before {
+  content: "\f00c";
+}
+
+i.icon.remove:before {
+  content: "\f00d";
+}
+
+/* jshint ignore:end */

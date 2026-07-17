@@ -1,0 +1,41 @@
+<div ng-if="reaction.position === 'left'">
+	<a class="user-picture" ng-href="/#!/usuarios/{{reaction.user.username}}">
+		<img
+			ng-src="{{reaction.user.image}}"
+			img-err-src="/modules/core/imgs/profile.jpg"
+		/>
+	</a>
+	<div class="message">
+		<div class="message-corner"></div>
+		{{reaction.reaction}}
+	</div>
+	<favorites
+		favorites="reaction.favorites"
+		current-user-id="currentUserId"
+		on-delete-favorite="onDeleteReactionFavorite"
+		on-create-favorite="onCreateReactionFavorite"
+		identifier="reaction.id"
+		ng-if="showFavorites">
+	</favorites>
+</div>
+
+<div ng-if="reaction.position === 'right'">
+	<a class="user-picture-right" ng-href="/#!/usuarios/{{reaction.user.username}}">
+		<img
+			ng-src="{{reaction.user.image}}"
+			img-err-src="/modules/core/imgs/profile.jpg"
+		/>
+	</a>
+	<div class="message-right">
+		<div class="message-corner-right"></div>
+		{{reaction.reaction}}
+	</div>
+	<favorites
+		favorites="reaction.favorites"
+		current-user-id="currentUserId"
+		on-delete-favorite="onDeleteReactionFavorite"
+		on-create-favorite="onCreateReactionFavorite"
+		identifier="reaction.id"
+		ng-if="showFavorites">
+	</favorites>
+</div>

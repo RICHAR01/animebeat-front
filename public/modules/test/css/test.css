@@ -1,0 +1,4 @@
+/* Hide load picture addon */
+/*.medium-insert-buttons-addons li:first-child {
+  display: none !important;
+}*/

@@ -1,0 +1,26 @@
+<div id="character-edition-modal" class="modal">
+  <div class="modal-content row no-margin">
+    <h5 ng-if="selectedCharacter.id">Editando personaje</h5>
+    <h5 ng-if="!selectedCharacter.id">Nuevo personaje</h5>
+    
+    <div class="col s12 no-padding" ng-form="episodeForm">
+
+      <div class="col s12" input-field>
+        <input id="name" ng-model="selectedCharacter.name" type="text" length="100" maxlength="100">
+        <label for="name">Nombre</label>
+      </div>
+
+      <div class="col s12" input-field>
+        <input id="image" ng-model="selectedCharacter.image" type="text" length="150" maxlength="150">
+        <label for="image">URL Imagen</label>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="modal-action waves-effect waves-green btn-flat"
+       ng-click="onSaveCharacter()"
+       ng-disabled="episodeForm.$invalid">Aceptar</button>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>

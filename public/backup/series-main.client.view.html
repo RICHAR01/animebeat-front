@@ -1,0 +1,83 @@
+<div class="row home-page">
+
+  <div class="col s8 block-container">
+
+    <div class="block-title">
+      <div class="title" href="">Últimos posts</div>
+    </div>
+
+    <div class="block-content">
+
+      <div class="cols-container">
+        
+        <a class="col l3 m4 s6 serie" href="#!/series/{{serie.id}}" ng-repeat="serie in series">
+          <div class="frame">
+            <img class="picture" ng-src="{{serie.poster}}">
+            <div class="overlay">
+              <div class="actions">
+                <span class="hov-blue action">
+                  <i class="bookmark icon"></i>
+                </span>
+                <span class="hov-green action">
+                  <i class="play icon"></i>
+                </span>
+              </div>
+            </div>
+            <div class="sub title">
+              Episodio <span class="number">{{$index+1}}</span>
+              <span class="time">
+                <i class="wait icon"></i> 5 días
+              </span>
+            </div>
+            <div class="title">
+              <div class="limit">{{serie.name}}</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col s4 block-container">
+
+    <div class="block-title">
+      <div class="title" href="">Últimos posts</div>
+    </div>
+
+    <div class="block-content">
+
+      <div class="cols-container">
+        <a class="col l6 m6 s12 serie" href="#!/series/{{serie.id}}" ng-repeat="serie in series">
+          <div class="frame">
+            <img class="picture" ng-src="{{serie.poster}}">
+            <div class="overlay">
+              <div class="actions">
+                <span class="hov-blue action">
+                  <i class="bookmark icon"></i>
+                </span>
+                <span class="hov-green action">
+                  <i class="play icon"></i>
+                </span>
+              </div>
+            </div>
+            <div class="sub title">
+              Episodio <span class="number">{{$index+1}}</span>
+              <span class="time">
+                <i class="wait icon"></i> 5 días
+              </span>
+            </div>
+            <div class="title">
+              <div class="limit">{{serie.name}}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+  </div> 
+
+</div>

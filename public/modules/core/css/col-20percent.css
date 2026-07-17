@@ -1,0 +1,55 @@
+/* Cols 20%, 5 equals cols */
+
+.row .col.s20percent  {
+  width: 20%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+.row .col.offset-s20percent  {
+  margin-left: 20%;
+}
+.row .col.pull-s20percent  {
+  right: 20%;
+}
+.row .col.push-s20percent  {
+  left: 20%;
+}
+
+@media only screen and (min-width: 601px) {
+  .row .col.m20percent {
+    width: 20%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+  }
+  .row .col.offset-m20percent {
+    margin-left: 20%;
+  }
+  .row .col.pull-m20percent {
+    right: 20%;
+  }
+  .row .col.push-m20percent {
+    left: 20%;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .row .col.l20percent {
+    width: 20%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+  }
+  .row .col.offset-l20percent {
+    margin-left: 20%;
+  }
+  .row .col.pull-l20percent {
+    right: 20%;
+  }
+  .row .col.push-l20percent {
+    left: 20%;
+  }
+}
+
+/* Cols 20% end */

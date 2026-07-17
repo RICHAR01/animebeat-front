@@ -1,0 +1,23 @@
+{
+  "name": "material-design-icons",
+  "author": "Material Design Authors",
+  "description": "Material Design icons by Google",
+  "keywords": [
+    "icons",
+    "material",
+    "material-design",
+    "google"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "http://google.com/design/spec",
+  "version": "3.0.2",
+  "_release": "3.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.0.2",
+    "commit": "f40051c7a11568a0e51fc693d1b4e5e96dfe218e"
+  },
+  "_source": "https://github.com/google/material-design-icons.git",
+  "_target": "^3.0.1",
+  "_originalSource": "material-design-icons"
+}

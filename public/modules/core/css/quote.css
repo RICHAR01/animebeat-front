@@ -1,0 +1,44 @@
+quote {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  padding: 8px;
+}
+
+quote .image-container {
+  float: left;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+quote .image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+quote .description-container {
+  float: left;
+  width: calc(100% - 55px);
+  padding: 6px 16px 0 16px;
+  font-size: 13px;
+}
+
+quote .description-container .character-quote {
+  line-height: 21px;
+	font-size: 13.5px;
+	color: #030303;
+}
+
+quote .description-container .character-name {
+	padding-top: 4px;
+  line-height: 11px;
+	font-size: 11px;
+	color: #a8a8a8;
+	font-style: italic;
+	letter-spacing: 0.25px;
+}
