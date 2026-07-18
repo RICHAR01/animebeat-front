@@ -11,26 +11,29 @@
   <link rel="stylesheet" href="/public/modules/series/css/serie.css">
   <link rel="stylesheet" href="/public/modules/series/css/watch.css">
   <link rel="stylesheet" href="/public/modules/users/css/users.css">
-  <link rel="stylesheet" href="/public/modules/series/css/semantic-ui-icon.css">
   <base href="/">
 </head>
 <body>
   <ui-view></ui-view>
 
+  <!-- Core libs -->
   <script src="/public/lib/jquery/dist/jquery.min.js"></script>
   <script src="/public/lib/materialize/dist/js/materialize.min.js"></script>
+  <script src="/public/lib/moment/min/moment.min.js"></script>
   <script src="/public/lib/angular/angular.min.js"></script>
+  
+  <!-- Angular modules (order matters!) -->
   <script src="/public/lib/angular-resource/angular-resource.min.js"></script>
   <script src="/public/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="/public/lib/angular-paging/dist/paging.min.js"></script>
-  <script src="/public/lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
   <script src="/public/lib/angular-moment/angular-moment.min.js"></script>
-  <script src="/public/lib/moment/min/moment.min.js"></script>
+  <script src="/public/lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
+  <script src="/public/lib/angular-paging/dist/paging.min.js"></script>
   <script src="/public/lib/angular-materialize/src/angular-materialize.js"></script>
   <script src="/public/lib/angular-medium-editor/dist/angular-medium-editor.min.js"></script>
   <script src="/public/lib/angular-multi-select/isteven-multi-select.js"></script>
   <script src="/public/lib/video.js/dist/video.min.js"></script>
 
+  <!-- App -->
   <script src="/public/config.js"></script>
   <script src="/public/application.js"></script>
 </body>
