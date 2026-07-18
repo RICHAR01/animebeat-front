@@ -1,18 +1,18 @@
-FROM node:12-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Install build deps for native modules (mongoose 5.x needs them)
+# Build deps for native modules
 RUN apk add --no-cache python3 make g++
 
-# Copy package files first for layer caching
+# Copy package files first for caching
 COPY package*.json .bowerrc bower.json ./
 
-# Fresh install with mongoose 5.13
-RUN npm install --production=false --legacy-peer-deps
+# Fresh install with mongoose 8 + legacy compat
+RUN npm install --legacy-peer-deps --ignore-engines
 RUN npm install -g bower 2>/dev/null && bower install --config.interactive=false --allow-root 2>/dev/null || true
 
-# Copy the rest  
+# Copy app
 COPY . .
 
 ENV NODE_ENV=production
